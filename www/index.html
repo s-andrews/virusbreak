@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Virus Outbreak Simulator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <script src="jquery-3.4.0.min.js"></script>
     <script src="classes.js"></script>
@@ -13,28 +14,24 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1>Virus Outbreak Simulator</h1>
-    </div>
 
 
     <div class="virus">
         <h2>Virus Properties</h2>
 
-        <p>Virulence (how likely to infect someone): <span id="virulence">0.1</span></p>
+        <p>Virulence <br>(how likely to infect someone): <br><span id="virulence" class="changevalue">0.1</span> %</p>
         <div class="slider"><input type="range" min="0" max="100" value="10" id="virulenceslider"> </div>
 
-
-        <p>Lethality (how likely to kill someone): <span id="lethality">0.1</span></p>
+        <p>Lethality <br>(how likely to kill someone): <br><span id="lethality" class="changevalue">0.1</span> %</p>
         <div class="slider"><input type="range" min="0" max="100" value="10" id="lethalityslider"> </div>
 
-        <p>Incubation Time (how many days without symptoms): <span id="incubation">5</span></p>
+        <p>Incubation Time <br>(how many days without symptoms): <br><span id="incubation" class="changevalue">5</span> days</p>
         <div class="slider"><input type="range" min="0" max="20" value="5" id="incubationslider"> </div>
 
-        <p>Infection Time (how many days are you ill): <span id="infection">5</span></p>
+        <p>Infection Time <br>(how many days are you ill): <br><span id="infection" class="changevalue">5</span> days</p>
         <div class="slider"><input type="range" min="0" max="20" value="5" id="infectionslider"> </div>
 
-        <p>Vaccination (how much of the population is vaccinated): <span id="vaccination">5</span></p>
+        <p>Vaccination <br>(how much of the population is vaccinated): <br><span id="vaccination" class="changevalue">5</span> %</p>
         <div class="slider"><input type="range" min="0" max="100" value="80" id="vaccinationslider"> </div>
 
 
@@ -42,7 +39,8 @@
 
 
     <div class="simulation">
-        <div id="clockdiv">
+        <h1>Virus Outbreak Simulator</h1>
+         <div id="clockdiv">
             <p id="day">Day 1</p>
         </div>
 

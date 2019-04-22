@@ -154,9 +154,19 @@ var setPersonClass = function(r,c) {
 }
 
 
+var updateSliders = function () {
+    $("#virulence").html(Math.round(virus.virulence*100));
+    $("#lethality").html(Math.round(virus.lethality*100));
+    $("#incubation").html(Math.round(virus.incubation));
+    $("#infection").html(Math.round(virus.infection));
+    $("#vaccination").html(Math.round(virus.vaccination*100));
+}
+
+
 $(document).ready(function(){
 
     createSimulationTable();
+    updateSliders();
 
     $("td").click(function(){
         result = $(this).attr('id').split("_");
@@ -200,27 +210,27 @@ $(document).ready(function(){
     // Monitor the virus properties
     $("#virulenceslider").change(function() {
         virus.virulence = $(this).val() / 100;
-        $("#virulence").html(virus.virulence);
+        updateSliders();
     })
 
     $("#lethalityslider").change(function() {
         virus.lethality = $(this).val() / 100;
-        $("#lethality").html(virus.lethality);
+        updateSliders();
     })
 
     $("#incubationslider").change(function() {
         virus.incubation = $(this).val();
-        $("#incubation").html(virus.incubation);
+        updateSliders();
     })
 
     $("#infectionslider").change(function() {
         virus.infection = $(this).val();
-        $("#infection").html(virus.infection);
+        updateSliders();
     })
 
     $("#vaccinationslider").change(function() {
         virus.vaccination = $(this).val() / 100;
-        $("#vaccination").html(virus.vaccination);
+        updateSliders();
     })
 
 
