@@ -29,7 +29,8 @@ var createSimulationTable = function () {
         // already have to the table....
         therow = $("#simulationtable tr:last");
         for (c=1;c<=cols;c++) {
-            therow.append("<td></td>");
+            dataID="r"+r+"c"+c;
+            therow.append("<td id="+dataID+"></td>");
         }
     }
 
