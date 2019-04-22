@@ -2,6 +2,10 @@ body {
     font-family: 'Audiowide';font-size: 22px;
 }
 
+h1, h2 {
+    color: #d00;
+}
+
 td {
     background-color: lightgray;
     padding: 5px;
@@ -41,6 +45,10 @@ div.simulation {
 div.virus {
     width:30%;
     float: right;
+}
+
+div.virus p {
+    font-size: 80%;
 }
 
 span.changevalue {

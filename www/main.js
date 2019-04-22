@@ -70,7 +70,7 @@ var increaseDay = function () {
             }
             // See if they have reached the end of an infectious or illness phase
             if (person.infectedAt != null) {
-                if (person.infectedAt + virus.incubation + virus.infection <= day) {
+                if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) <= day) {
                     // They've reached the end of the incubation period so they either
                     // need to become immune or die
                     if (virus.randomIsLethal()) {
@@ -141,8 +141,9 @@ var setPersonClass = function(r,c) {
         person.jqueryObj.addClass("immune");
     }
     else if (person.infectedAt != null) {
-        if (person.infectedAt + virus.incubation <= day) {
+        if (parseInt(person.infectedAt) + parseInt(virus.incubation) <= day) {
             // They're infected
+            console.log("Setting infected");
             person.jqueryObj.addClass("infected");
         }
         else {
@@ -194,6 +195,7 @@ $(document).ready(function(){
             $("#startstop").html("Start");
         }
         day = 1;
+        $("#day").text("Day "+day);
 
         for (r=0;r<rows;r++) {
             for (c=0;c<cols;c++) {
