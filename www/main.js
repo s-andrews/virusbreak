@@ -9,7 +9,7 @@ let rows=60;
 let cols=100;
 
 // The virus parameters we're currently using
-let virus = new Virus(0.01,5,2,0.5);
+let virus = new Virus(0.01,5,2,0.5,0.8, true);
 
 // A variable to hold the people in the simulation
 let people = null;
@@ -177,6 +177,26 @@ $(document).ready(function(){
     });
 
 
+    $("#reset").click(function() {
+        if (intervalID != null) {
+            clearInterval(intervalID);
+            intervalID=null;
+            $("#startstop").html("Start");
+        }
+        day = 1;
+
+        for (r=0;r<rows;r++) {
+            for (c=0;c<cols;c++) {
+                people[r][c].reset();
+            }
+        }   
+        
+        setPeopleClasses();
+        
+    });
+
+
+
     // Monitor the virus properties
     $("#virulenceslider").change(function() {
         virus.virulence = $(this).val() / 100;
@@ -198,6 +218,10 @@ $(document).ready(function(){
         $("#infection").html(virus.infection);
     })
 
+    $("#vaccinationslider").change(function() {
+        virus.vaccination = $(this).val() / 100;
+        $("#vaccination").html(virus.vaccination);
+    })
 
 
 });

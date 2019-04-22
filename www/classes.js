@@ -4,11 +4,15 @@ class Virus {
         incubation,     // How long (days) between being infections and having symptoms
         infection,      // How long (days) between being symptomatic and either dieing or being cured
         lethality,      // How likely you are to die from being infected (0 - 1)
+        vaccination,    // What proportion of the population are vaccinated (0 - 1)
+        quarantine      // Whether there is effective quarantine for infected people
     ) {
         this.virulence = virulence;
         this.incubation = incubation;
         this.infection = infection;
         this.lethality = lethality;
+        this.vaccination = vaccination;
+        this.quarantine = quarantine;
     }
 
 
@@ -20,6 +24,11 @@ class Virus {
     // A true/false value to say whether an infection is going to be lethal
     randomIsLethal () {
         return(Math.random() <= this.lethality);
+    }
+
+    // A true / false value to say whether an individual starts out vaccinated
+    randomIsVaccinated () {
+        return(Math.random() <= this.vaccination);
     }
 
 
@@ -38,6 +47,12 @@ class Person {
         this.infectedAt = null;     // The day at which they were infected
         this.immune = false;        // Whether or not they are immune (either vaccinated or cured)
         this.dead = false;          // Whether they died from an infection
+    }
+
+    reset() {
+        this.infectedAt = null;
+        this.dead = false;
+        this.immune = virus.randomIsVaccinated();
     }
 
     can_infect () {

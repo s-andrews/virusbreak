@@ -1,6 +1,8 @@
 td {
     background-color: lightgray;
     padding: 5px;
+    border: 0px;
+    margin: 0px;
 }
 
 td.infected {
