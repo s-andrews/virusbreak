@@ -14,12 +14,12 @@ class Virus {
 
     // A true/false value to say whether we're going to be infectious in this round
     randomIsInfected () {
-        return(Math.random <= virulence);
+        return(Math.random() <= this.virulence);
     }
 
     // A true/false value to say whether an infection is going to be lethal
     randomIsLethal () {
-        return(Math.random <= lethality);
+        return(Math.random() <= this.lethality);
     }
 
 
@@ -39,4 +39,13 @@ class Person {
         this.immune = false;        // Whether or not they are immune (either vaccinated or cured)
         this.dead = false;          // Whether they died from an infection
     }
+
+    can_infect () {
+        if (dead || immune || infectedAt == null) {
+            return false;
+        }
+
+        return true;
+    }
+
 }

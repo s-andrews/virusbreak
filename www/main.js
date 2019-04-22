@@ -2,14 +2,14 @@
 let day=1;
 
 // The amount of time(ms) taken between days - the speed of updates
-let timeout=1000;
+let timeout=500;
 
 // The size of the simulation area
-let rows=20;
-let cols=20;
+let rows=60;
+let cols=100;
 
 // The virus parameters we're currently using
-let virus = new Virus(0.1,10,2,0.5);
+let virus = new Virus(0.01,5,2,0.5);
 
 // A variable to hold the people in the simulation
 let people = null;
@@ -56,6 +56,57 @@ var increaseDay = function () {
     day += 1;
     $("#day").text("Day "+day);
 
+    // Go through the people updating their
+    // status if needed and create new infections
+    // if needed.
+    for (r=0;r<rows;r++) {
+        for (c=0;c<cols;c++) {
+
+            person = people[r][c];
+
+            if (person.dead || person.immune) {
+                // These are final states so there's nothing more to do
+                continue;
+            }
+            // See if they have reached the end of an infectious or illness phase
+            if (person.infectedAt != null) {
+                if (person.infectedAt + virus.incubation + virus.infection <= day) {
+                    // They've reached the end of the incubation period so they either
+                    // need to become immune or die
+                    if (virus.randomIsLethal()) {
+                        // They died
+                        person.dead = true;
+                    }
+                    else {
+                        // They survived and are now immune
+                        person.immune = true;
+                    }
+                }
+
+                else  if (person.infectedAt < day) {  // Need to check they haven't been infected in this round
+                    // They are infectious and can potentially infect other
+                    // people.  We check one square around the current square to see if we can infect others.
+                    
+                    for (r2=r-1;r2<=r+1;r2++) {
+                        for (c2=c-1;c2<=c+1;c2++) {
+                            if (r2<0 || c2 < 0) continue;
+                            if (r2>=rows || c2>=cols) continue;
+
+                            // No point in doing anything if they're immune, infected or dead.
+                            if (people[r2][c2].immune  || people[r2][c2].dead || people[r2][c2].infectedAt != null) continue;
+
+                            // Roll the dice to see if they're infected this time.
+                            if (virus.randomIsInfected()) {
+                                people[r2][c2].infectedAt = day;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
     // Update the classes
     setPeopleClasses();
 }
@@ -124,6 +175,28 @@ $(document).ready(function(){
             $(this).html("Stop");
         }
     });
+
+
+    // Monitor the virus properties
+    $("#virulenceslider").change(function() {
+        virus.virulence = $(this).val() / 100;
+        $("#virulence").html(virus.virulence);
+    })
+
+    $("#lethalityslider").change(function() {
+        virus.lethality = $(this).val() / 100;
+        $("#lethality").html(virus.lethality);
+    })
+
+    $("#incubationslider").change(function() {
+        virus.incubation = $(this).val();
+        $("#incubation").html(virus.incubation);
+    })
+
+    $("#infectionslider").change(function() {
+        virus.infection = $(this).val();
+        $("#infection").html(virus.infection);
+    })
 
 
 

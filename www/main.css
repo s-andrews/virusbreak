@@ -1,5 +1,5 @@
 td {
-    background-color: grey;
+    background-color: lightgray;
     padding: 5px;
 }
 
@@ -17,4 +17,22 @@ td.infectious {
 
 td.dead {
     background-color: black;
+}
+
+div.slider {
+    width: 100%;
+}
+input {
+    width: 100%;
+}
+
+div.simulation {
+    margin-left: 0%;
+    margin-right: 70%;
+    width: 70%;
+}
+
+div.virus {
+    width:30%;
+    float: right;
 }
