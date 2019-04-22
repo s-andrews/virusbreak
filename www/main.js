@@ -1,6 +1,8 @@
 let day=1;
 let timeout=1000;
 
+let intervalID = null;
+
 var increaseDay = function () {
     day += 1;
     $("#day").text("Day "+day);
@@ -9,12 +11,22 @@ var increaseDay = function () {
 
 $(document).ready(function(){
 
-    setInterval(increaseDay,timeout);
 
     $("td").click(function(){
         $(this).addClass("infectious");
     });
 
+    $("#startstop").click(function() {
+        if (intervalID != null) {
+            clearInterval(intervalID);
+            intervalID=null;
+            $(this).html("Start");
+        }
+        else {
+            intervalID = setInterval(increaseDay,timeout);
+            $(this).html("Stop");
+        }
+    });
 
 
 
