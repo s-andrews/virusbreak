@@ -9,7 +9,7 @@ let rows=60;
 let cols=100;
 
 // The virus parameters we're currently using
-let virus = new Virus(0.01,5,2,0.5,0.8, true);
+let virus = new Virus(0.1,5,2,0.5,0, true);
 
 // A variable to hold the people in the simulation
 let people = null;
@@ -164,10 +164,30 @@ var setPersonClass = function(r,c) {
 
 var updateSliders = function () {
     $("#virulence").html(Math.round(virus.virulence*100));
+    if ($("#virulenceslider").val() != Math.round(virus.virulence*100)) {
+        $("#virulenceslider").val(Math.round(virus.virulence*100));
+    }
+
     $("#lethality").html(Math.round(virus.lethality*100));
+    if ($("#lethalityslider").val() != Math.round(virus.lethality*100)) {
+        $("#lethalityslider").val(Math.round(virus.lethality*100));
+    }
+
     $("#incubation").html(Math.round(virus.incubation));
+    if ($("#incubationslider").val() != Math.round(virus.incubation)) {
+        $("#incubationslider").val(Math.round(virus.incubation));
+    }
+
+
     $("#infection").html(Math.round(virus.infection));
+    if ($("#infectionslider").val() != Math.round(virus.infection)) {
+        $("#infectionslider").val(Math.round(virus.infection));
+    }
+
     $("#vaccination").html(Math.round(virus.vaccination*100));
+    if ($("#vaccinationslider").val() != Math.round(virus.vaccination * 100)) {
+        $("#vaccinationslider").val(Math.round(virus.vaccination*100));
+    }
 }
 
 
