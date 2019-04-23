@@ -44,8 +44,17 @@ button {
     text-transform: uppercase;
 }
 
+select {
+    font-family: 'Audiowide';font-size: 22px;
+    font-size: 100%;
+    color: red;
+}
+
+
 div.slider {
     width: 100%;
+    padding: 0;
+    margin: 0;
 }
 input {
     width: 100%;

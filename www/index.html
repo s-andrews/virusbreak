@@ -21,23 +21,27 @@
     <div class="virus">
         <h2>Virus Properties</h2>
 
-        <p>Virulence <br>(how likely to infect someone): <br><span id="virulence" class="changevalue">0.1</span> %</p>
+        <p><span id="virulence" class="changevalue">0.1</span> % Virulence <br>(how likely to infect someone)</p>
         <div class="slider"><input type="range" min="0" max="100" value="10" id="virulenceslider"> </div>
 
-        <p>Lethality <br>(how likely to kill someone): <br><span id="lethality" class="changevalue">0.1</span> %</p>
+        <p><span id="lethality" class="changevalue">0.1</span> % Lethality <br>(how likely to kill someone)</p>
         <div class="slider"><input type="range" min="0" max="100" value="10" id="lethalityslider"> </div>
 
-        <p>Incubation Time <br>(how many days without symptoms): <br><span id="incubation" class="changevalue">5</span>
-            days</p>
+        <p><span id="incubation" class="changevalue">5</span> days Incubation Time <br>(how many days without symptoms)</p>
         <div class="slider"><input type="range" min="0" max="20" value="5" id="incubationslider"> </div>
 
-        <p>Infection Time <br>(how many days are you ill): <br><span id="infection" class="changevalue">5</span> days
-        </p>
+        <p><span id="infection" class="changevalue">5</span> days Infection Time <br>(how many days are you ill)</p>
         <div class="slider"><input type="range" min="0" max="20" value="5" id="infectionslider"> </div>
 
-        <p>Vaccination <br>(how much of the population is vaccinated): <br><span id="vaccination"
-                class="changevalue">5</span> %</p>
+        <p><span id="vaccination" class="changevalue">5</span> %Vaccination <br>(how much of the population is vaccinated)</p>
         <div class="slider"><input type="range" min="0" max="100" value="80" id="vaccinationslider"> </div>
+
+        <p>Containment <br>(whether obviously infected people are quarantined)</p>
+        <div><select name="quarantine" id="quarantineselector">
+            <option>No quarantine</option>
+            <option>Quanrantine</option>
+            </select>
+        </div>
 
 
     </div>
