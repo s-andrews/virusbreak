@@ -47,12 +47,14 @@ class Person {
         this.infectedAt = null;     // The day at which they were infected
         this.immune = false;        // Whether or not they are immune (either vaccinated or cured)
         this.dead = false;          // Whether they died from an infection
+        this.lastChecked = 0;       // The day in which we last tried to become infected so we don't double count.
     }
 
     reset() {
         this.infectedAt = null;
         this.dead = false;
         this.immune = virus.randomIsVaccinated();
+        this.lastChecked = 0;
     }
 
     can_infect () {

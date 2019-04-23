@@ -68,6 +68,7 @@ var increaseDay = function () {
                 // These are final states so there's nothing more to do
                 continue;
             }
+
             // See if they have reached the end of an infectious or illness phase
             if (person.infectedAt != null) {
                 if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) <= day) {
@@ -95,6 +96,12 @@ var increaseDay = function () {
                             // No point in doing anything if they're immune, infected or dead.
                             if (people[r2][c2].immune  || people[r2][c2].dead || people[r2][c2].infectedAt != null) continue;
 
+                            // We only give once chance per day for each person to become infected, so
+                            // if they've already been tried today then move on.
+                            if (people[r2][c2].lastChecked == day) continue;
+
+                            // Set today as their last checked day so they don't get checked again until tomorrow
+                            people[r2][c2].lastCheked = day;
                             // Roll the dice to see if they're infected this time.
                             if (virus.randomIsInfected()) {
                                 people[r2][c2].infectedAt = day;
