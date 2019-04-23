@@ -6,7 +6,7 @@ let timeout=500;
 
 // The size of the simulation area
 let rows=60;
-let cols=100;
+let cols=120;
 
 // The virus parameters we're currently using
 let virus = new Virus(0.1,5,2,0.5,0, true);
@@ -145,6 +145,9 @@ var setPersonClass = function(r,c) {
     // Easiest if they are dead!
     if (person.dead) {
         person.jqueryObj.addClass("dead");
+    }
+    else if (person.vaccinated) {
+        person.jqueryObj.addClass("vaccinated");
     }
     else if (person.immune) {
         person.jqueryObj.addClass("immune");

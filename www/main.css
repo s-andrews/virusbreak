@@ -25,6 +25,10 @@ td.immune {
     background-color: green;
 }
 
+td.vaccinated {
+    background-color: #666;
+}
+
 td.infectious {
     background-color: purple;
 }
