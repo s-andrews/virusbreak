@@ -6,6 +6,9 @@ h1, h2 {
     color: #d00;
 }
 
+table {
+    border-collapse: collapse;
+}
 td {
     background-color: lightgray;
     padding: 5px;
