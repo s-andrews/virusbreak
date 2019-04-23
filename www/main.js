@@ -85,6 +85,7 @@ var increaseDay = function () {
                 }
 
                 else  if (person.infectedAt < day) {  // Need to check they haven't been infected in this round
+
                     // They are infectious and can potentially infect other
                     // people.  We check one square around the current square to see if we can infect others.
                     
@@ -101,7 +102,8 @@ var increaseDay = function () {
                             if (people[r2][c2].lastChecked == day) continue;
 
                             // Set today as their last checked day so they don't get checked again until tomorrow
-                            people[r2][c2].lastCheked = day;
+                            people[r2][c2].lastChecked = day;
+
                             // Roll the dice to see if they're infected this time.
                             if (virus.randomIsInfected()) {
                                 people[r2][c2].infectedAt = day;
@@ -150,7 +152,6 @@ var setPersonClass = function(r,c) {
     else if (person.infectedAt != null) {
         if (parseInt(person.infectedAt) + parseInt(virus.incubation) <= day) {
             // They're infected
-            console.log("Setting infected");
             person.jqueryObj.addClass("infected");
         }
         else {
