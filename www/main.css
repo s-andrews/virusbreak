@@ -8,6 +8,7 @@ h1, h2 {
 
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 td {
     background-color: lightgray;
@@ -32,6 +33,13 @@ td.dead {
     background-color: black;
 }
 
+button {
+    font-family: 'Audiowide';font-size: 22px;
+    font-size: 200%;
+    margin: 1em;
+    text-transform: uppercase;
+}
+
 div.slider {
     width: 100%;
 }
@@ -40,9 +48,9 @@ input {
 }
 
 div.simulation {
-    margin-left: 0%;
-    margin-right: 70%;
-    width: 70%;
+    margin-left: 2%;
+    margin-right: 65%;
+    width: 63%;
 }
 
 div.virus {
@@ -57,4 +65,10 @@ div.virus p {
 span.changevalue {
     font-size: 150%;
     color: red;
+}
+
+div.buttons {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
