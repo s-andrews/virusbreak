@@ -85,3 +85,57 @@ div.buttons {
     margin-right: auto;
     text-align: center;
 }
+
+div.categories {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width:100%;
+}
+
+ul.categories {
+    list-style: none;
+    padding: 0;
+    margin:0;
+    border: 0;
+}    
+
+ul.categories li {
+    display: inline-block;
+    color: white;
+    margin:0;
+    border: 0;
+    padding: 0.5em;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+ul.categories li.dead {
+    display: inline-block;
+    background-color: black;
+}
+
+ul.categories li.immune {
+    display: inline-block;
+    background-color: green;
+}
+
+ul.categories li.infectious {
+    display: inline-block;
+    background-color: purple;
+}
+
+ul.categories li.symptomatic {
+    display: inline-block;
+    background-color: red;
+}
+
+ul.categories li.vaccinated {
+    display: inline-block;
+    background-color: #AAA;
+}
+
+ul.categories li.uninfected {
+    display: inline-block;
+    background-color: lightgray;
+}
