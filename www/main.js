@@ -68,7 +68,7 @@ var increaseDay = function () {
 
 
             // See if we need to make them be killed or cured
-            if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) <= day) {
+            if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) == day) {
                 // They've reached the end of the incubation period so they either
                 // need to become immune or die
                 if (virus.randomIsLethal()) {
