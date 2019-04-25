@@ -216,6 +216,11 @@ var resetSimulation = function () {
 
 $(document).ready(function () {
 
+    // We can work out the appropriate size for the simulation table
+    // console.log("Height="+$("#simulationtable").height() + " width " + $("#simulationtable").width());
+    // cols = $("#simulationtable").width()/5
+    // rows = $("#simulationtable").height()/5
+
     createSimulationTable();
     updateSliders();
 
