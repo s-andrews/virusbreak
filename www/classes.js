@@ -60,7 +60,16 @@ class Person {
     }
 
     can_infect () {
-        if (dead || immune || infectedAt == null) {
+        if (this.dead || this.immune || this.infectedAt == null) {
+            return false;
+        }
+
+        // They're not infectious if they only got infected in this round
+        if (this.infectedAt == day) return false;
+
+        // THey won't infect if we're quarantining and they are 
+        // visibly infectious.
+        if (virus.quarantine && parseInt(this.infectedAt) + parseInt(virus.incubation) < day) {
             return false;
         }
 
