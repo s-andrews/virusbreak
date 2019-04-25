@@ -287,5 +287,12 @@ $(document).ready(function () {
         updateSliders();
     })
 
+    // We'll eventually use this to select specific viruses 
+    // rather than modifying general properties.
+    $("#virusproperties").click(function () {
+        console.log("Clicked");
+        $("#virusslide").toggle();
+    })
+
 
 });
