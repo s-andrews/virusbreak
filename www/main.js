@@ -192,6 +192,26 @@ var updateSliders = function () {
     if ($("#vaccinationslider").val() != Math.round(virus.vaccination * 100)) {
         $("#vaccinationslider").val(Math.round(virus.vaccination*100));
     }
+
+    // Update the quarantine selector.
+}
+
+var resetSimulation = function () {
+    if (intervalID != null) {
+        clearInterval(intervalID);
+        intervalID=null;
+        $("#startstop").html("Start");
+    }
+    day = 1;
+    $("#day").text("Day "+day);
+
+    for (r=0;r<rows;r++) {
+        for (c=0;c<cols;c++) {
+            people[r][c].reset();
+        }
+    }   
+    
+    setPeopleClasses();
 }
 
 
@@ -220,22 +240,7 @@ $(document).ready(function(){
 
 
     $("#reset").click(function() {
-        if (intervalID != null) {
-            clearInterval(intervalID);
-            intervalID=null;
-            $("#startstop").html("Start");
-        }
-        day = 1;
-        $("#day").text("Day "+day);
-
-        for (r=0;r<rows;r++) {
-            for (c=0;c<cols;c++) {
-                people[r][c].reset();
-            }
-        }   
-        
-        setPeopleClasses();
-        
+        resetSimulation();        
     });
 
 
@@ -263,6 +268,17 @@ $(document).ready(function(){
 
     $("#vaccinationslider").change(function() {
         virus.vaccination = $(this).val() / 100;
+        updateSliders();
+        resetSimulation();
+    })
+
+    $("#quarantineselector").change(function() {
+        if ($(this).val() == "No quarantine") {
+            virus.quarantine = false;
+        }
+        else {
+            virus.quarantine = true;
+        }
         updateSliders();
     })
 
