@@ -17,6 +17,13 @@ td {
     margin: 0px;
 }
 
+#day {
+    font-size: 150%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
 td.infected {
     background-color: red;
 }
@@ -52,10 +59,33 @@ select {
 
 
 div.slider {
-    width: 100%;
+    width: 90%;
     padding: 0;
     margin: 0;
 }
+
+.slidercontrol {
+    background: lightgray;
+}
+
+.slidercontrol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: url('virus_icon.png');
+    cursor: pointer;
+  }
+  
+  .slidercontrol::-moz-range-thumb {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: url('virus_icon.png');
+    cursor: pointer;
+  }
+
 input {
     width: 100%;
 }
