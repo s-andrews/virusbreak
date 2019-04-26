@@ -9,7 +9,7 @@ let rows = 60;
 let cols = 120;
 
 // The virus parameters we're currently using
-let virus = new Virus(0.1, 5, 2, 0.5, 0, true);
+let virus = new Virus(0.1, 5, 2, 0.5, 0, false);
 
 // A variable to hold the people in the simulation
 let people = null;
