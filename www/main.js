@@ -43,7 +43,7 @@ var createSimulationTable = function () {
 
         for (c = 0; c < cols; c++) {
             dataID = "r_" + r + "_c_" + c;
-            therow.append("<td id=" + dataID + "></td>");
+            therow.append("<td class='simulationtd' id=" + dataID + "></td>");
 
             people[r][c] = new Person($("#" + dataID), r, c);
         }
