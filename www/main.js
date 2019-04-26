@@ -360,4 +360,22 @@ $(document).ready(function () {
     })
 
 
+    // Make the design responsive and change where the different
+    // parts come depending on the window size
+    $(window).resize(function() {
+        console.log($(this).width());
+        if ($(this).width() < 800) {
+            $("div.virus").css("width","100%");
+            $("div.virus").css("float","none");
+            $("div.simulation").css("width","96%");
+        }
+        else {
+            $("div.virus").css("width","30%");
+            $("div.virus").css("float","right");
+            $("div.simulation").css("width","63%");
+
+        }
+    })
+
+
 });
