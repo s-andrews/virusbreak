@@ -4,6 +4,11 @@ let day = 1;
 // The amount of time(ms) taken between days - the speed of updates
 let timeout = 500;
 
+
+// Population size.  When we cite values they're relative to a
+// nominal population. We'll use the 2019 UK population estimate
+let population = 66000000;
+
 // The size of the simulation area
 let rows = 60;
 let cols = 120;
@@ -147,11 +152,34 @@ var setPeopleClasses = function () {
     }
 
     for (var thisclass in groupcounts) {
-        $("#"+thisclass+"count").html(groupcounts[thisclass]);
+        $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
     }
 
     // We can test whether there are no infectious or infected
     // individuals and stop the simulation if this is the case.
+}
+
+var formatLargeNumber = function (value) {
+
+    // The number which comes in is just a number
+    // of squares.  We need to correct this to 
+    // reflect a number of people from our supposed
+    // population
+
+    value = value / (rows*cols);
+    value = value * population;
+
+    if (value > 1000000) {
+        value = Math.round(value/1000000);
+        return (value + "M");
+    }
+
+    if (value > 1000) {
+        value = Math.round(value/1000);
+        return (value + "k");
+    }
+
+    return(value);
 }
 
 
