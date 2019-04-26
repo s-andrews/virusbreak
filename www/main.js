@@ -48,6 +48,9 @@ var createSimulationTable = function () {
             people[r][c] = new Person($("#" + dataID), r, c);
         }
     }
+
+    // We need to call this to get the numeric values set correctly initially.
+    setPeopleClasses();
 }
 
 
