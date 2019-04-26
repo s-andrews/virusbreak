@@ -224,6 +224,8 @@ $(document).ready(function () {
     createSimulationTable();
     updateSliders();
 
+    $('#viruslist').toggle();
+
     $("td").click(function () {
         result = $(this).attr('id').split("_");
         people[result[1]][result[3]].infectedAt = day;
@@ -292,6 +294,7 @@ $(document).ready(function () {
     $("#virusproperties").click(function () {
         console.log("Clicked");
         $("#virusslide").toggle();
+        $('#viruslist').toggle();
     })
 
 

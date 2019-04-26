@@ -21,29 +21,42 @@
     <div class="virus">
         <h2 id="virusproperties">Virus Properties</h2>
 
-        <div id="virusslide">
-        <p><span id="virulence" class="changevalue">0.1</span> % Virulence <br>(how likely to infect someone)</p>
-        <div class="slider"><input type="range" min="0" max="100" value="10" id="virulenceslider"> </div>
-
-        <p><span id="lethality" class="changevalue">0.1</span> % Lethality <br>(how likely to kill someone)</p>
-        <div class="slider"><input type="range" min="0" max="100" value="10" id="lethalityslider"> </div>
-
-        <p><span id="incubation" class="changevalue">5</span> days Incubation Time <br>(how many days without symptoms)</p>
-        <div class="slider"><input type="range" min="0" max="20" value="5" id="incubationslider"> </div>
-
-        <p><span id="infection" class="changevalue">5</span> days Infection Time <br>(how many days are you ill)</p>
-        <div class="slider"><input type="range" min="0" max="20" value="5" id="infectionslider"> </div>
-
-        <p><span id="vaccination" class="changevalue">5</span> %Vaccination <br>(how much of the population is vaccinated)</p>
-        <div class="slider"><input type="range" min="0" max="100" value="80" id="vaccinationslider"> </div>
-
-        <p>Containment <br>(whether obviously infected people are quarantined)</p>
-        <div><select name="quarantine" id="quarantineselector">
-            <option>No quarantine</option>
-            <option>Quanrantine</option>
-            </select>
+        <div id="viruschoice">
+            <ul id="viruslist">
+                <li><a href="#">Influenza</a></li>
+                <li><a href="#">Black Death</a></li>
+                <li><a href="#">Measles</a></li>
+            </ul>
         </div>
-    </div>
+
+
+
+        <div id="virusslide">
+            <p><span id="virulence" class="changevalue">0.1</span> % Virulence <br>(how likely to infect someone)</p>
+            <div class="slider"><input type="range" min="0" max="100" value="10" id="virulenceslider"> </div>
+
+            <p><span id="lethality" class="changevalue">0.1</span> % Lethality <br>(how likely to kill someone)</p>
+            <div class="slider"><input type="range" min="0" max="100" value="10" id="lethalityslider"> </div>
+
+            <p><span id="incubation" class="changevalue">5</span> days Incubation Time <br>(how many days without
+                symptoms)</p>
+            <div class="slider"><input type="range" min="0" max="20" value="5" id="incubationslider"> </div>
+
+            <p><span id="infection" class="changevalue">5</span> days Infection Time <br>(how many days are you ill)</p>
+            <div class="slider"><input type="range" min="0" max="20" value="5" id="infectionslider"> </div>
+
+            <p><span id="vaccination" class="changevalue">5</span> %Vaccination <br>(how much of the population is
+                vaccinated)</p>
+            <div class="slider"><input type="range" min="0" max="100" value="80" id="vaccinationslider"> </div>
+
+            <p>Containment <br>(whether obviously infected people are quarantined)</p>
+            <div><select name="quarantine" id="quarantineselector">
+                    <option>No quarantine</option>
+                    <option>Quanrantine</option>
+                </select>
+            </div>
+        </div>
+
 
     </div>
 
@@ -63,7 +76,7 @@
                 <li class="dead">Dead</li>
             </ul>
         </div>
-    
+
         <table id="simulationtable">
 
         </table>

@@ -93,6 +93,18 @@ div.categories {
     width:100%;
 }
 
+#viruslist {
+    list-style: none;
+    padding: 0;
+}
+#viruslist a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    display: block;
+    padding: 1em;
+}
+
 ul.categories {
     list-style: none;
     padding: 0;
