@@ -3,9 +3,6 @@ let day = 1;
 
 // The amount of time(ms) taken between days - the speed of updates
 let timeout = 500;
-
-
-// Population size.  When we cite values they're relative to a
 // nominal population. We'll use the 2019 UK population estimate
 let population = 66000000;
 
@@ -157,6 +154,14 @@ var setPeopleClasses = function () {
 
     // We can test whether there are no infectious or infected
     // individuals and stop the simulation if this is the case.
+
+    if (groupcounts["infectious"] == 0 && groupcounts["symptomatic"] == 0) {
+        if (intervalID != null) {
+            clearInterval(intervalID);
+            intervalID = null;
+            $("#startstop").html("Start");
+        }
+    }
 }
 
 var formatLargeNumber = function (value) {
