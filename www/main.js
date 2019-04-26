@@ -125,12 +125,30 @@ var increaseDay = function () {
 // clicking.
 
 var setPeopleClasses = function () {
+
+    // We want to update the counters at the end of this
+    // so let's keep track of that
+    let groupcounts = {
+        uninfected : 0,
+        infectious : 0,
+        symptomatic : 0,
+        immune : 0,
+        vaccinated : 0,
+        dead : 0
+    }
     for (r = 0; r < rows; r++) {
         for (c = 0; c < cols; c++) {
-            setPersonClass(r, c);
-
+            thisclass = setPersonClass(r, c);
+            groupcounts[thisclass]++;
         }
     }
+
+    for (var thisclass in groupcounts) {
+        $("#"+thisclass+"count").html(groupcounts[thisclass]);
+    }
+
+    // We can test whether there are no infectious or infected
+    // individuals and stop the simulation if this is the case.
 }
 
 
@@ -144,22 +162,30 @@ var setPersonClass = function (r, c) {
     // Easiest if they are dead!
     if (person.dead) {
         person.jqueryObj.addClass("dead");
+        return("dead")
     }
     else if (person.vaccinated) {
         person.jqueryObj.addClass("vaccinated");
+        return("vaccinated");
     }
     else if (person.immune) {
         person.jqueryObj.addClass("immune");
+        return("immune");
     }
     else if (person.infectedAt != null) {
         if (parseInt(person.infectedAt) + parseInt(virus.incubation) <= day) {
             // They're infected
             person.jqueryObj.addClass("infected");
+            return("symptomatic");
         }
         else {
             // They're infectious but asymptomatic
             person.jqueryObj.addClass("infectious");
+            return("infectious");
         }
+    }
+    else {
+        return("uninfected");
     }
 
 }
