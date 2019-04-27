@@ -1,7 +1,7 @@
 [
     {
         "name" : "Influenza",
-        "virulence" : 20,
+        "virulence" : 0.2,
         "incubation" : 7,
         "infection" : 4,
         "lethality" : 0.03,
@@ -11,7 +11,7 @@
 
     {
         "name" : "Measles",
-        "virulence" : 50,
+        "virulence" : 0.5,
         "incubation" : 2,
         "infection" : 5,
         "lethality" : 0.1,
@@ -21,7 +21,7 @@
 
     {
         "name" : "Black Death", 
-        "virulence" : 70,
+        "virulence" : 0.7,
         "incubation" : 14,
         "infection" : 2,
         "lethality" : 0.8,

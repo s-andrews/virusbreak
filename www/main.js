@@ -22,6 +22,12 @@ let people = null;
 let intervalID = null;
 
 
+// We'll make a variable which will hold the details of the
+// pre-prepared viruses which we're going to load from a 
+// json file
+
+let viruses = null;
+
 // A function which builds the simulation table to save us having
 // to long code the HTML. Also means we can control the size of the
 // simulation by just changing the rows/cols variables above.
@@ -55,6 +61,51 @@ var createSimulationTable = function () {
     setPeopleClasses();
 }
 
+
+// A function to load the list of pre-prepared viruses and then populate the
+// virus list so people can click on it.
+var loadVirusList = function() {
+    $.getJSON("viruses.json",function(response){
+        viruses = response;
+        createVirusList();
+
+        // If someone clicks on a custom virus then update the 
+        // settings to use that.  We need to register this here
+        // as the objects don't exist before so we can't bind in 
+        // the main handler
+        $(".customvirus").click(function(){selectCustomVirus($(this).text())})
+
+    });
+}
+
+
+var selectCustomVirus = function (virusname) {
+    for (i=0;i<viruses.length;i++) {
+        customvirus = viruses[i];
+        if (customvirus.name == virusname) {
+            virus.virulence = customvirus.virulence;
+            virus.incubation = customvirus.incubation; 
+            virus.infection = customvirus.infection;
+            virus.lethality = customvirus.lethality;
+            virus.vaccination = customvirus.vaccination;
+            virus.quarantine = customvirus.quarantine;
+            
+            updateSliders();
+            return;
+        }
+    }
+
+}
+
+
+var createVirusList = function () {
+
+    vlist = $("#viruslist");
+    vlist.empty();
+    for (i=0; i<viruses.length; i++) {
+        vlist.append('<li><a href="#" class="customvirus">'+viruses[i].name+'</a></li>');
+    }
+}
 
 // The main function which iterates the simulation.
 var increaseDay = function () {
@@ -284,6 +335,7 @@ $(document).ready(function () {
     // rows = $("#simulationtable").height()/5
 
     createSimulationTable();
+    loadVirusList();
     updateSliders();
 
     $('#viruslist').toggle();
@@ -354,16 +406,15 @@ $(document).ready(function () {
     // We'll eventually use this to select specific viruses 
     // rather than modifying general properties.
     $("#virusproperties").click(function () {
-        console.log("Clicked");
         $("#virusslide").toggle();
         $('#viruslist').toggle();
     })
 
 
+
     // Make the design responsive and change where the different
     // parts come depending on the window size
     $(window).resize(function() {
-        console.log($(this).width());
         if ($(this).width() < 800) {
             $("div.virus").css("width","100%");
             $("div.virus").css("float","none");
