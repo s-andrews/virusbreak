@@ -1,30 +1,30 @@
 [
     {
         "name" : "Influenza",
-        "virulence" : 0.2,
-        "incubation" : 7,
+        "virulence" : 0.5,
+        "incubation" : 2,
         "infection" : 4,
-        "lethality" : 0.03,
-        "vaccination" : 0.7,
+        "lethality" : 0.05,
+        "vaccination" : 0.47,
         "quarantine" : false
     },
 
     {
         "name" : "Measles",
-        "virulence" : 0.5,
+        "virulence" : 0.9,
         "incubation" : 2,
-        "infection" : 5,
-        "lethality" : 0.1,
-        "vaccination" : 0.4,
+        "infection" : 2,
+        "lethality" : 0.03,
+        "vaccination" : 0.75,
         "quarantine" : true
     },
 
     {
-        "name" : "Black Death", 
-        "virulence" : 0.7,
-        "incubation" : 14,
-        "infection" : 2,
-        "lethality" : 0.8,
+        "name" : "Ebola", 
+        "virulence" : 0.05,
+        "incubation" : 10,
+        "infection" : 5,
+        "lethality" : 0.5,
         "vaccination" : 0,
         "quarantine" : false
     }
