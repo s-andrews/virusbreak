@@ -341,6 +341,50 @@ var setPersonClass = function (r, c) {
 }
 
 
+// This randomly adds an infection to a person who
+// is not vaccinated or infected at the moment.
+var randomlyInfect = function () {
+
+    randRow = Math.floor(Math.random()*rows);
+    randCol = Math.floor(Math.random()*cols);
+
+    // We find the first position after this which can
+    // be infected and we infect that.
+
+    for (r=randRow;r<rows;r++) {
+        for (c=0;c<cols;c++) {
+            // On the first row we only check from the randCol onwards
+            if (r==randRow && c<randCol) continue;
+
+            if (people[r][c].infectedAt == null && !people[r][c].vaccinated) {
+                people[r][c].infectedAt = day;
+                setPeopleClasses();
+                return;
+            }
+        }
+    }
+
+    // If we get here then we didn't find anyone to infect, so we'll work 
+    // backwards and see if we can find anyone that way.
+
+    for (r=randRow;r>=0;r--) {
+        for (c=cols=1;c>=0;c--) {
+            // On the first row we only check from the randCol onwards
+            if (r==randRow && c>randCol) continue;
+
+            if (people[r][c].infectedAt == null && !people[r][c].vaccinated) {
+                people[r][c].infectedAt = day;
+                setPeopleClasses();
+                return;
+            }
+        }
+    }
+
+    // If we get here then we couldn't find anyone to infect!
+
+}
+
+
 var updateSliders = function () {
     $("#virulence").html(Math.round(virus.virulence * 100));
     if ($("#virulenceslider").val() != Math.round(virus.virulence * 100)) {
@@ -406,7 +450,7 @@ $(document).ready(function () {
     $("td").click(function () {
         result = $(this).attr('id').split("_");
         people[result[1]][result[3]].infectedAt = day;
-        setPersonClass(result[1], result[3]);
+        setPeopleClasses();
     });
 
     $("#startstop").click(function () {
@@ -424,6 +468,10 @@ $(document).ready(function () {
 
     $("#reset").click(function () {
         resetSimulation();
+    });
+
+    $("#infect").click(function () {
+        randomlyInfect();
     });
 
 
