@@ -49,6 +49,7 @@ class Person {
         this.vaccinated = false;    // Whether they have been vaccinated
         this.dead = false;          // Whether they died from an infection
         this.lastChecked = 0;       // The day in which we last tried to become infected so we don't double count.
+        this.lastMoved = 0;         // The day on which they last moved
     }
 
     reset() {
@@ -57,6 +58,7 @@ class Person {
         this.vaccinated = virus.randomIsVaccinated();
         this.immune = this.vaccinated;
         this.lastChecked = 0;
+        this.lastMoved = 0;
     }
 
     can_infect () {
@@ -69,6 +71,29 @@ class Person {
 
         // THey won't infect if we're quarantining and they are 
         // visibly infectious.
+        if (virus.quarantine && parseInt(this.infectedAt) + parseInt(virus.incubation) < day) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    can_move () {
+
+        // Dead people don't move
+        if (this.dead) {
+            return false;
+        }
+
+        if (this.lastMoved == day) return false;
+
+        // Healthy people can always move
+        if (this.vaccinated || this.immune || this.infectedAt == null) {
+            return true;
+        }
+
+        // We don't let quarantined people move
         if (virus.quarantine && parseInt(this.infectedAt) + parseInt(virus.incubation) < day) {
             return false;
         }

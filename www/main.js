@@ -10,6 +10,9 @@ let population = 66000000;
 let rows = 60;
 let cols = 120;
 
+// let rows = 3;
+// let cols = 3;
+
 // The virus parameters we're currently using
 let virus = new Virus(0.1, 5, 2, 0.5, 0, false);
 
@@ -122,7 +125,6 @@ var increaseDay = function () {
 
             if (person.infectedAt == null) continue; // Nothing to do
 
-
             // See if we need to make them be killed or cured
             if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) == day) {
                 // They've reached the end of the incubation period so they either
@@ -168,9 +170,70 @@ var increaseDay = function () {
                     }
                 }
             }
-
         }
     }
+
+    // Now we've done the round of infection we'll do another pass to
+    // allow them to move
+    for (r = 0; r < rows; r++) {
+        for (c = 0; c < cols; c++) {
+
+            person = people[r][c];
+
+            if (person.can_move()) {
+                person.lastMoved = day;
+                // We'll let them try to move.
+                // 
+                // We'll select a random position from around them and try to 
+                // swap with that person.
+
+                // Make a row offset and a col offset between 0 and 1
+                // We only move down or right as positions up or left 
+                // will already have tried to move.
+
+                rowOffset = Math.floor(Math.random()*2);
+                colOffset = Math.floor(Math.random()*2);
+
+                if (rowOffset == 0 && colOffset == 0) continue;  // They're staying put
+
+                // Get the coordinates of the place we're going to swap with
+                rowOffset = r+rowOffset;
+                colOffset = c+colOffset;
+
+                // Check this is a valid position
+                // if (rowOffset < 0 || colOffset < 0 || rowOffset >= rows || colOffset >=cols || (rowOffset==r && colOffset==c) || !people[rowOffset][colOffset].can_move()) {
+               if (rowOffset < 0 || colOffset < 0 || rowOffset >= rows || colOffset >=cols || !people[rowOffset][colOffset].can_move())  {
+                    continue;
+                }
+
+                // If we get here then we can swap the people in r,c and rowOffset,colOffset
+
+                person2 = people[rowOffset][colOffset];
+
+                person2.lastMoved = day;
+
+                // Save the values from person
+                tinf = person.infectedAt;
+                timm = person.immune;
+                tvac = person.vaccinated;
+                tded = person.dead;
+
+                // Give person the values from person2
+                person.infectedAt = person2.infectedAt;
+                person.immune = person2.immune;
+                person.vaccinated = person2.vaccinated;
+                person.dead = person2.dead;
+
+                // Give person2 the cached values
+                person2.infectedAt = tinf;
+                person2.immune = timm;
+                person2.vaccinated = tvac;
+                person2.tded = tded;
+
+            }
+        }
+    }
+
     // Update the classes
     setPeopleClasses();
 }
