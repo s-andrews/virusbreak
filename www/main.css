@@ -2,10 +2,10 @@
 
 :root {
     --uninfected: darkgrey;
-    --infectious: purple;
-    --symptomatic: #F44;
-    --immune: rgb(86, 167, 86);
-    --vaccinated: #686;
+    --infectious: #984ea3;
+    --symptomatic: #e41a1c;
+    --immune: #4daf4a;
+    --vaccinated: #507c4e;
     --dead: black;
 
 }
