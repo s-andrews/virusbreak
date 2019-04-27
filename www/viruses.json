@@ -1,0 +1,32 @@
+[
+    {
+        "name" : "Influenza",
+        "virulence" : 20,
+        "incubation" : 7,
+        "infection" : 4,
+        "lethality" : 0.03,
+        "vaccination" : 0.7,
+        "quarantine" : false
+    },
+
+    {
+        "name" : "Measles",
+        "virulence" : 50,
+        "incubation" : 2,
+        "infection" : 5,
+        "lethality" : 0.1,
+        "vaccination" : 0.4,
+        "quarantine" : true
+    },
+
+    {
+        "name" : "Black Death", 
+        "virulence" : 70,
+        "incubation" : 14,
+        "infection" : 2,
+        "lethality" : 0.8,
+        "vaccination" : 0,
+        "quarantine" : false
+    }
+
+]
