@@ -1,3 +1,15 @@
+/* Set some properties for the main colour categories */
+
+:root {
+    --uninfected: darkgrey;
+    --infectious: purple;
+    --symptomatic: #F44;
+    --immune: rgb(86, 167, 86);
+    --vaccinated: #686;
+    --dead: black;
+
+}
+
 body {
     font-family: 'Audiowide';font-size: 22px;
 }
@@ -13,7 +25,7 @@ table {
     width: 100%;
 }
 td {
-    background-color: lightgray;
+    background-color: var(--uninfected);
     padding-left: 1px;
     padding-right: 1px;
     padding-top: 5px;
@@ -31,24 +43,24 @@ td {
     text-align: center;
 }
 
-td.infected {
-    background-color: red;
+td.symptomatic {
+    background-color: var(--symptomatic);
 }
 
 td.immune {
-    background-color: green;
+    background-color: var(--immune);
 }
 
 td.vaccinated {
-    background-color: #AAA;
+    background-color: var(--vaccinated);
 }
 
 td.infectious {
-    background-color: purple;
+    background-color: var(--infectious);
 }
 
 td.dead {
-    background-color: black;
+    background-color: var(--dead);
 }
 
 button {
@@ -162,30 +174,30 @@ ul.categories li {
 
 ul.categories li.dead {
     display: inline-block;
-    background-color: black;
+    background-color: var(--dead);
 }
 
 ul.categories li.immune {
     display: inline-block;
-    background-color: green;
+    background-color: var(--immune);
 }
 
 ul.categories li.infectious {
     display: inline-block;
-    background-color: purple;
+    background-color: var(--infectious);
 }
 
 ul.categories li.symptomatic {
     display: inline-block;
-    background-color: red;
+    background-color: var(--symptomatic);
 }
 
 ul.categories li.vaccinated {
     display: inline-block;
-    background-color: #AAA;
+    background-color: var(--vaccinated);
 }
 
 ul.categories li.uninfected {
     display: inline-block;
-    background-color: lightgray;
+    background-color: var(--uninfected);
 }

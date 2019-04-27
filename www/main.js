@@ -324,8 +324,8 @@ var setPersonClass = function (r, c) {
     }
     else if (person.infectedAt != null) {
         if (parseInt(person.infectedAt) + parseInt(virus.incubation) <= day) {
-            // They're infected
-            person.jqueryObj.addClass("infected");
+            // They're symptomatic
+            person.jqueryObj.addClass("symptomatic");
             return("symptomatic");
         }
         else {
