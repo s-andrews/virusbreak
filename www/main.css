@@ -154,6 +154,43 @@ div.categories {
     padding: 1em;
 }
 
+ul.sidebar {
+    display: table;
+    width: 90%;
+    list-style: none;
+    padding: 0;
+    margin:0;
+    border: 0;
+}    
+
+ul.sidebar li {
+    display: table-cell;
+    text-align: center;
+    color: white;
+    background: darkgray;
+    margin:2px;
+    padding: 0.5em;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+ul.sidebar li:hover {
+    background: red;
+}
+
+ul.sidebar li.selected {
+    background: red;
+}
+
+ul.sidebar li.smallonly {
+    display: none;
+}
+ul.sidebar li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
 ul.categories {
     list-style: none;
     padding: 0;

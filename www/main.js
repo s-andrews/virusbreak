@@ -445,7 +445,7 @@ $(document).ready(function () {
     loadVirusList();
     updateSliders();
 
-    $('#viruslist').toggle();
+    $("#virusslide").hide();
 
     $("td").click(function () {
         result = $(this).attr('id').split("_");
@@ -514,11 +514,23 @@ $(document).ready(function () {
         updateSliders();
     })
 
-    // We'll eventually use this to select specific viruses 
-    // rather than modifying general properties.
-    $("#virusproperties").click(function () {
-        $("#virusslide").toggle();
-        $('#viruslist').toggle();
+    // Check for clicks on the links in the sidebar
+    $(".sidebar li a").click(function () {
+        if ($(this).text() == "Viruses") {
+            $("#viruslist").show();
+            $("#virusslide").hide();
+            $(".sidebar li").removeClass("selected")
+            $(".sidebar li:nth-child(1)").addClass("selected");
+        }
+        else if ($(this).text() == "Properties") {
+            $("#virusslide").show();
+            $('#viruslist').hide();
+            $(".sidebar li").removeClass("selected")
+            $(".sidebar li:nth-child(2)").addClass("selected");
+        }
+        else {
+            alert("No match to "+$(this).text())
+        }
     })
 
 
