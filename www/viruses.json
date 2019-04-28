@@ -4,7 +4,7 @@
 "virulence" : 0.5,
 "incubation" : 2,
 "infection" : 4,
-"lethality" : 0.05,
+"lethality" : 0.005,
 "vaccination" : 0.47,
 "quarantine" : false
 },
@@ -14,18 +14,18 @@
     "virulence" : 0.9,
     "incubation" : 2,
     "infection" : 2,
-    "lethality" : 0.03,
+    "lethality" : 0.003,
     "vaccination" : 0.75,
     "quarantine" : true
 },
 
 {
     "name" : "Ebola", 
-    "virulence" : 0.05,
+    "virulence" : 0.02,
     "incubation" : 10,
     "infection" : 5,
     "lethality" : 0.5,
     "vaccination" : 0,
-    "quarantine" : false
+    "quarantine" : true
 }
 ]
