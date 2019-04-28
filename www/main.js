@@ -445,8 +445,6 @@ $(document).ready(function () {
     loadVirusList();
     updateSliders();
 
-    $("#virusslide").hide();
-
     $("td").click(function () {
         result = $(this).attr('id').split("_");
         people[result[1]][result[3]].infectedAt = day;
