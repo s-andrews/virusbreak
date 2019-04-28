@@ -192,6 +192,7 @@ ul.sidebar li.selected {
 ul.sidebar li.smallonly {
     display: none;
 }
+
 ul.sidebar li a {
     display: block;
     text-decoration: none;
@@ -244,4 +245,20 @@ ul.categories li.vaccinated {
 ul.categories li.uninfected {
     display: inline-block;
     background-color: var(--uninfected);
+}
+
+
+/* Set different CSS for small screens such as phones */
+@media only screen and (max-width: 800px) {
+    ul.sidebar li.smallonly {
+        display: table-cell;
+    }
+    div.virus {
+        width: 100%;
+        float: none;
+    }
+    div.simulation {
+        width: 100%;
+        display: none;
+    }
 }
