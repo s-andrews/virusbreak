@@ -522,19 +522,39 @@ $(document).ready(function () {
         if ($(this).text() == "Viruses") {
             $("#viruslist").show();
             $("#virusslide").hide();
+            if ($(window).width() < 800) {
+                $('div.simulation').hide();                
+            }
             $(".sidebar li").removeClass("selected")
             $(".sidebar li:nth-child(1)").addClass("selected");
         }
         else if ($(this).text() == "Properties") {
             $("#virusslide").show();
             $('#viruslist').hide();
+            if ($(window).width() < 800) {
+                $('div.simulation').hide();                
+            }
             $(".sidebar li").removeClass("selected")
             $(".sidebar li:nth-child(2)").addClass("selected");
         }
+        else if ($(this).text() == "Run") {
+            $("#virusslide").hide();
+            $('#viruslist').hide();
+            $('div.simulation').show();
+            $(".sidebar li").removeClass("selected")
+            $(".sidebar li:nth-child(3)").addClass("selected");
+        }
+
         else {
             alert("No match to "+$(this).text())
         }
     })
 
+
+    $(window).resize(function () {
+        if ($(window).width() > 800) {
+            $("div.simulation").show();
+        }
+    })
 
 });
