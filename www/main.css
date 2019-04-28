@@ -78,7 +78,7 @@ select {
 
 
 div.slider {
-    width: 90%;
+    width: 100%;
     padding: 0;
     margin: 0;
 }
@@ -116,7 +116,8 @@ div.simulation {
 }
 
 div.virus {
-    width:30%;
+    width:28%;
+    margin-right: 2%;
     float: right;
 }
 
@@ -162,7 +163,7 @@ div.categories {
 
 ul.sidebar {
     display: table;
-    width: 90%;
+    width: 100%;
     list-style: none;
     padding: 0;
     margin:0;
