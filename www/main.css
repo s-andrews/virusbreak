@@ -39,8 +39,10 @@ td {
     padding: 0;
     margin: 0;
     border: 0;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
-    text-align: center;
+    text-align: left;
+    margin-left: 40%;
 }
 
 td.symptomatic {
@@ -67,6 +69,8 @@ button {
     font-family: 'Audiowide';font-size: 22px;
     font-size: 200%;
     margin: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     text-transform: uppercase;
 }
 
@@ -184,7 +188,7 @@ ul.sidebar li {
 }
 
 ul.sidebar li:hover {
-    background: red;
+    background: rgb(151, 80, 80);
 }
 
 ul.sidebar li.selected {
@@ -260,7 +264,20 @@ ul.categories li.uninfected {
         float: none;
     }
     div.simulation {
-        width: 100%;
+        width: 96%;
         display: none;
+    }
+    h1 {
+        text-align: center;
+        font-size: 120%;
+    }
+
+    button {
+        font-size: 100%;
+        padding: 1.2em;
+        margin: 0.2em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    
     }
 }

@@ -7,7 +7,7 @@ let timeout = 500;
 let population = 66000000;
 
 // The size of the simulation area
-let rows = 60;
+let rows = 50;
 let cols = 120;
 
 // let rows = 3;
@@ -419,6 +419,12 @@ var updateSliders = function () {
     }
 
     // Update the quarantine selector.
+    if (virus.quarantine) {
+        $("#quarantineselector").val("Quarantine");
+    }
+    else {
+        $("#quarantineselector").val("No quarantine");
+    }
 }
 
 var resetSimulation = function () {
