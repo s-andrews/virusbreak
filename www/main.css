@@ -281,4 +281,13 @@ ul.categories li.uninfected {
         padding-bottom: 0.5em;
     
     }
+
+    #day {
+        font-size: 100%;
+    }
+
+    ul.categories li {
+        font-size: 50%; 
+    }
+
 }
