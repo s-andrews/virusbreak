@@ -146,12 +146,18 @@ div.categories {
     list-style: none;
     padding: 0;
 }
+
 #viruslist a {
     text-decoration: none;
     color: black;
     text-transform: uppercase;
     display: block;
     padding: 1em;
+}
+
+#viruslist a.selected {
+    color: white;
+    background: black;
 }
 
 ul.sidebar {

@@ -76,7 +76,12 @@ var loadVirusList = function() {
         // settings to use that.  We need to register this here
         // as the objects don't exist before so we can't bind in 
         // the main handler
-        $(".customvirus").click(function(){selectCustomVirus($(this).text())})
+
+        $(".customvirus").click(function(){
+            selectCustomVirus($(this).text());
+            $(".customvirus").removeClass("selected");
+            $(this).addClass("selected");
+        })
 
     });
 }
