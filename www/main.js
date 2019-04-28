@@ -99,7 +99,8 @@ var selectCustomVirus = function (virusname) {
             virus.quarantine = customvirus.quarantine;
             
             updateSliders();
-            return;
+            resetSimulation();
+            break;
         }
     }
 
