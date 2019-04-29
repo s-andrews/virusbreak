@@ -2,7 +2,7 @@
 let day = 1;
 
 // The amount of time(ms) taken between days - the speed of updates
-let timeout = 500;
+let timeout = 250;
 // nominal population. We'll use the 2019 UK population estimate
 let population = 66000000;
 
