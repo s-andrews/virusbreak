@@ -442,7 +442,11 @@ var resetSimulation = function () {
         }
     }
 
-    setPeopleClasses();
+    // We finish by randomly introducing one
+    // infection so that there's something to 
+    // do in the simulation
+    randomlyInfect();
+
 }
 
 
@@ -456,6 +460,7 @@ $(document).ready(function () {
     createSimulationTable();
     loadVirusList();
     updateSliders();
+    randomlyInfect();
 
     $("td").click(function () {
         result = $(this).attr('id').split("_");
