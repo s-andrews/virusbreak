@@ -68,17 +68,17 @@ var createSimulationTable = function () {
 }
 
 
-// A function to load the list of pre-prepared viruses and then populate the
-// virus list so people can click on it.
-var loadVirusList = function() {
+// A function to populate the help div from a separate file
+var loadWelcomeText = function() {
     $.get("intro.html",function(response){
         $("#welcomecontent").append(response);
     });
 }
 
 
-// A function to populate the help div from a separate file
-var loadWelcomeText = function() {
+// A function to load the list of pre-prepared viruses and then populate the
+// virus list so people can click on it.
+var loadVirusList = function() {
     $.get("viruses.json",function(response){
         viruses = response;
         createVirusList();
@@ -468,8 +468,9 @@ $(document).ready(function () {
     // cols = $("#simulationtable").width()/5
     // rows = $("#simulationtable").height()/5
 
-    createSimulationTable();
+    loadWelcomeText();
     loadVirusList();
+    createSimulationTable();
     updateSliders();
     randomlyInfect();
 

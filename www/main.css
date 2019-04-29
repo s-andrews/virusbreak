@@ -165,6 +165,18 @@ div.virus p {
     overflow: auto;     
 }
 
+#welcomecontent li {
+    margin-bottom: 2em;
+    line-height: 120%;
+}
+
+#welcomecontent li strong{
+    color:#d00;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+
+
 span.changevalue {
     font-size: 150%;
     color: red;
