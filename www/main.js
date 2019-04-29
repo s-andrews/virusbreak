@@ -492,6 +492,10 @@ $(document).ready(function () {
         randomlyInfect();
     });
 
+    $("#play").click(function () {
+        $("#fadeout").hide();
+        $("#welcome").hide();
+    })
 
 
     // Monitor the virus properties

@@ -143,6 +143,28 @@ div.virus p {
     font-size: 80%;
 }
 
+#fadeout {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100%;
+    background: darkgray;
+    opacity: 0.7;
+}
+
+#welcome {
+    position: fixed;
+    height: 70vh;
+    width: 50%;
+    left: 25%;
+    top: 5vh;
+    background: white;
+    border: 3px solid black;
+    padding: 2em;
+    overflow: auto;     
+}
+
 span.changevalue {
     font-size: 150%;
     color: red;
@@ -304,6 +326,13 @@ ul.categories li.uninfected {
 
     ul.categories li {
         font-size: 50%; 
+    }
+
+    #welcome {
+        height: 75vh;
+        width: 75vw;
+        left: 5vw;
+        top: 5vh;
     }
 
 }
