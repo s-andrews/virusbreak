@@ -347,4 +347,12 @@ ul.categories li.uninfected {
         top: 5vh;
     }
 
+    #welcomecontent li {
+        font-size: 80%
+    }
+
+    #welcomecontent li strong {
+        font-size: 90%
+    }
+
 }
