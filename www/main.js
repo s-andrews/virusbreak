@@ -1,3 +1,6 @@
+// Be good an use strict mode
+'use-strict';
+
 // Variable to say where we are in the simulation
 let day = 1;
 
