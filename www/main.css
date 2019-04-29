@@ -5,7 +5,7 @@
     --infectious: #984ea3;
     --symptomatic: #e41a1c;
     --immune: #4daf4a;
-    --vaccinated: #768675;
+    --vaccinated: rgb(159, 180, 156);
     --dead: black;
 
 }
