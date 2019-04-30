@@ -154,15 +154,21 @@ div.virus p {
 }
 
 #welcome {
-    position: fixed;
-    height: 70vh;
+    position: absolute;
+    height: 80%;
     width: 50%;
-    left: 25%;
-    top: 5vh;
+    left: 50%;
+    top: 50%;
+    margin-left: -25%;
+    margin-top: -20%;
     background: white;
     border: 3px solid black;
-    padding: 2em;
+    padding: 0;
     overflow: auto;     
+}
+
+#welcomecontent {
+    padding: 2em;
 }
 
 #welcomecontent li {
@@ -341,13 +347,16 @@ ul.categories li.uninfected {
     }
 
     #welcome {
-        height: 75vh;
-        width: 75vw;
-        left: 5vw;
-        top: 5vh;
+        position: absolute;
+        height: 80%;
+        width: 80%;
+        left: 50%;
+        top: 50%;
+        margin-left: -40%;
+        margin-top: -40%;
     }
 
-    #welcomecontent li {
+    #welcomecontent {
         font-size: 80%
     }
 
