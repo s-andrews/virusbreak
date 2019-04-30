@@ -73,6 +73,8 @@ var loadWelcomeText = function() {
     $.get("intro.html",function(response){
         $("#welcomecontent").append(response);
     });
+
+    $("#welcome").show();
 }
 
 
