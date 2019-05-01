@@ -326,6 +326,9 @@ ul.categories li.uninfected {
     }
     h1 {
         text-align: center;
+        font-size: 110%;
+    }
+    h2 {
         font-size: 90%;
     }
 
@@ -333,6 +336,7 @@ ul.categories li.uninfected {
         font-size: 80%;
         padding: 0.5em;
         margin: 0.2em;
+        margin-bottom: 2em;
         padding-top: 0.2em;
         padding-bottom: 0.2em;
     
@@ -352,7 +356,8 @@ ul.categories li.uninfected {
     }
 
     #welcomecontent {
-        font-size: 80%
+        font-size: 70%;
+        padding: 1em;
     }
 
     #welcomecontent li strong {
