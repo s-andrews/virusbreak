@@ -143,6 +143,11 @@ div.virus p {
     font-size: 80%;
 }
 
+p.hint {
+    text-align: center;
+    color: darkgray;
+}
+
 #fadeout {
     position: fixed;
     top:0;
@@ -360,8 +365,11 @@ ul.categories li.uninfected {
         padding: 1em;
     }
 
+    #welcomecontent ul {
+        padding-left: 1em;
+    }
     #welcomecontent li strong {
-        font-size: 90%
+        font-size: 90%;
     }
 
 }

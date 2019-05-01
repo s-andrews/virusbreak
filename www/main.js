@@ -550,7 +550,7 @@ $(document).ready(function () {
     // Check for clicks on the links in the sidebar
     $(".sidebar li a").click(function () {
         if ($(this).text() == "Viruses") {
-            $("#viruslist").show();
+            $("#viruschoice").show();
             $("#virusslide").hide();
             if ($(window).width() < 800) {
                 $('div.simulation').hide();                
@@ -560,7 +560,7 @@ $(document).ready(function () {
         }
         else if ($(this).text() == "Properties") {
             $("#virusslide").show();
-            $('#viruslist').hide();
+            $('#viruschoice').hide();
             if ($(window).width() < 800) {
                 $('div.simulation').hide();                
             }
@@ -569,7 +569,7 @@ $(document).ready(function () {
         }
         else if ($(this).text() == "Run") {
             $("#virusslide").hide();
-            $('#viruslist').hide();
+            $('#viruschoice').hide();
             $('div.simulation').show();
             $(".sidebar li").removeClass("selected")
             $(".sidebar li:nth-child(3)").addClass("selected");
