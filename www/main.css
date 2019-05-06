@@ -103,6 +103,8 @@ div.slider {
 
 .slidercontrol {
     background: lightgray;
+    -webkit-appearance: none;
+    height: 20px;
 }
 
 .slidercontrol::-webkit-slider-thumb {
