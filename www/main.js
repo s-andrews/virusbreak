@@ -15,7 +15,7 @@ let costOfVaccine = 16; // Taken from Vaccine 34(2016) 1823 rounded up from 15.1
 let costOfIllness = 522; // Taken from UNUM sick pay guide
 let costOfDeath = 6015; // Taken from Nuffield trust end of life report 2017
 
-let displayCosts = true;
+let displayCosts = false;
 
 
 // The size of the simulation area
