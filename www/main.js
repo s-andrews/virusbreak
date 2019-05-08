@@ -9,6 +9,15 @@ let timeout = 250;
 // nominal population. We'll use the 2019 UK population estimate
 let population = 66000000;
 
+
+// When we model costs we need to have some values to work from
+let costOfVaccine = 16; // Taken from Vaccine 34(2016) 1823 rounded up from 15.15 as cost for mass measles vaccination
+let costOfIllness = 522; // Taken from UNUM sick pay guide
+let costOfDeath = 6015; // Taken from Nuffield trust end of life report 2017
+
+let displayCosts = true;
+
+
 // The size of the simulation area
 let rows = 50;
 let cols = 120;
@@ -281,8 +290,26 @@ var setPeopleClasses = function () {
         }
     }
 
-    for (var thisclass in groupcounts) {
-        $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
+    // We show different numbers depending on whether we're showing
+    // numbers of people or costs
+
+    if (displayCosts) {
+        // We need to adjust the numbers by the costs
+        groupcounts["dead"] *=  costOfDeath;
+        groupcounts["immune"] *=  costOfIllness;
+        groupcounts["vaccinated"] *=  costOfVaccine;
+        groupcounts["symptomatic"] *= costOfIllness;
+        groupcounts["uninfected"] *= 0;
+
+        for (var thisclass in groupcounts) {
+            $("#"+thisclass+"count").html("&pound;"+formatLargeNumber(groupcounts[thisclass]));
+        }
+   
+    }
+    else {
+        for (var thisclass in groupcounts) {
+         $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
+        }
     }
 
     // We can test whether there are no infectious or infected
@@ -307,9 +334,15 @@ var formatLargeNumber = function (value) {
     value = value / (rows*cols);
     value = value * population;
 
+    if (value > 1000000000) {
+        value = Math.round(value/1000000000);
+        return (value + "b");
+    }
+
+
     if (value > 1000000) {
         value = Math.round(value/1000000);
-        return (value + "M");
+        return (value + "m");
     }
 
     if (value > 1000) {
@@ -578,6 +611,13 @@ $(document).ready(function () {
         else {
             alert("No match to "+$(this).text())
         }
+    })
+
+    // Check for a click on any of the categories to change the way
+    // we display numbers
+    $("ul.categories li").click(function() {
+        displayCosts = ! displayCosts;
+        setPeopleClasses();
     })
 
 
