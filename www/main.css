@@ -150,6 +150,10 @@ p.hint {
     color: darkgray;
 }
 
+p.center {
+    text-align: center;
+}
+
 #fadeout {
     position: fixed;
     top:0;
