@@ -12,10 +12,10 @@ let population = 66000000;
 
 // When we model costs we need to have some values to work from
 let costOfVaccine = 16; // Taken from Vaccine 34(2016) 1823 rounded up from 15.15 as cost for mass measles vaccination
-let costOfIllness = 522; // Taken from UNUM sick pay guide
-let costOfDeath = 6015; // Taken from Nuffield trust end of life report 2017
-
-let displayCosts = false;
+let economicCostOfIllness = 422;    // Need to source this
+let economicCostOfDeath = 600;      // Need to source this
+let nhsCostOfIllness = 100;         // Need to source this
+let nhsCostOfDeath = 6015;          // Need to source this
 
 
 // The size of the simulation area
@@ -290,27 +290,20 @@ var setPeopleClasses = function () {
         }
     }
 
-    // We show different numbers depending on whether we're showing
-    // numbers of people or costs
-
-    if (displayCosts) {
-        // We need to adjust the numbers by the costs
-        groupcounts["dead"] *=  costOfDeath;
-        groupcounts["immune"] *=  costOfIllness;
-        groupcounts["vaccinated"] *=  costOfVaccine;
-        groupcounts["symptomatic"] *= costOfIllness;
-        groupcounts["uninfected"] *= 0;
-
-        for (var thisclass in groupcounts) {
-            $("#"+thisclass+"count").html("&pound;"+formatLargeNumber(groupcounts[thisclass]));
-        }
-   
+    // First we update the counts
+    for (var thisclass in groupcounts) {
+        $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
     }
-    else {
-        for (var thisclass in groupcounts) {
-         $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
-        }
-    }
+
+    // Now we update the costs
+
+     let economyCost =   (groupcounts["dead"] * economicCostOfDeath) + (groupcounts["immune"] * economicCostOfIllness) + (groupcounts["symptomatic"] * economicCostOfIllness);
+     let nhsCost =   (groupcounts["dead"] * nhsCostOfDeath) + (groupcounts["immune"] * nhsCostOfIllness) + (groupcounts["symptomatic"] * nhsCostOfIllness);
+     let vaccinationCost = groupcounts["vaccinated"] * costOfVaccine;
+
+    $("#economycost").html("&pound;"+formatLargeNumber(economyCost));
+    $("#nhscost").html("&pound;"+formatLargeNumber(nhsCost));
+    $("#vaccinationcost").html("&pound;"+formatLargeNumber(vaccinationCost));
 
     // We can test whether there are no infectious or infected
     // individuals and stop the simulation if this is the case.
@@ -611,13 +604,6 @@ $(document).ready(function () {
         else {
             alert("No match to "+$(this).text())
         }
-    })
-
-    // Check for a click on any of the categories to change the way
-    // we display numbers
-    $("ul.categories li").click(function() {
-        displayCosts = ! displayCosts;
-        setPeopleClasses();
     })
 
 
