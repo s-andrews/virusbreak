@@ -288,35 +288,43 @@ ul.categories li {
 }
 
 ul.categories li.dead {
-    display: inline-block;
     background-color: var(--dead);
 }
 
 ul.categories li.immune {
-    display: inline-block;
     background-color: var(--immune);
 }
 
 ul.categories li.infectious {
-    display: inline-block;
     background-color: var(--infectious);
 }
 
 ul.categories li.symptomatic {
-    display: inline-block;
     background-color: var(--symptomatic);
 }
 
 ul.categories li.vaccinated {
-    display: inline-block;
     background-color: var(--vaccinated);
 }
 
 ul.categories li.uninfected {
-    display: inline-block;
     background-color: var(--uninfected);
 }
 
+ul.categories li.nhscost {
+    width: 12em;
+    background-color: var(--symptomatic);
+}
+
+ul.categories li.economycost {
+    width: 12em;
+    background-color: var(--symptomatic);
+}
+
+ul.categories li.vaccinationcost {
+    width: 12em;
+    background-color: var(--vaccinated);
+}
 
 /* Set different CSS for small screens such as phones */
 @media only screen and (max-width: 800px) {
