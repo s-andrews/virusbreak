@@ -385,4 +385,9 @@ ul.categories li.vaccinationcost {
         font-size: 90%;
     }
 
+    #branding img {
+        max-width: 100px;
+        height: auto;
+    }
+
 }
