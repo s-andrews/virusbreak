@@ -11,11 +11,11 @@ let population = 66000000;
 
 
 // When we model costs we need to have some values to work from
-let costOfVaccine = 16; // Taken from Vaccine 34(2016) 1823 rounded up from 15.15 as cost for mass measles vaccination
-let economicCostOfIllness = 422;    // Need to source this
-let economicCostOfDeath = 600;      // Need to source this
-let nhsCostOfIllness = 100;         // Need to source this
-let nhsCostOfDeath = 6015;          // Need to source this
+let costOfVaccine = 16;             // See bug #28 for value source
+let economicCostOfIllness = 160;    // Cost is per day for this value
+let economicCostOfDeath = 8600000;  
+let nhsCostOfIllness = 100;         // Cost is per day for this value
+let nhsCostOfDeath = 26000;         
 
 
 // The size of the simulation area
@@ -297,8 +297,8 @@ var setPeopleClasses = function () {
 
     // Now we update the costs
 
-     let economyCost =   (groupcounts["dead"] * economicCostOfDeath) + (groupcounts["immune"] * economicCostOfIllness) + (groupcounts["symptomatic"] * economicCostOfIllness);
-     let nhsCost =   (groupcounts["dead"] * nhsCostOfDeath) + (groupcounts["immune"] * nhsCostOfIllness) + (groupcounts["symptomatic"] * nhsCostOfIllness);
+     let economyCost =   (groupcounts["dead"] * economicCostOfDeath) + (groupcounts["immune"] * economicCostOfIllness * virus.infection) + (groupcounts["symptomatic"] * economicCostOfIllness * virus.infection);
+     let nhsCost =   (groupcounts["dead"] * nhsCostOfDeath) + (groupcounts["immune"] * nhsCostOfIllness * virus.infection) + (groupcounts["symptomatic"] * nhsCostOfIllness * virus.infection);
      let vaccinationCost = groupcounts["vaccinated"] * costOfVaccine;
 
     $("#economycost").html("&pound;"+formatLargeNumber(economyCost));
