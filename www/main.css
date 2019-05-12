@@ -313,17 +313,17 @@ ul.categories li.uninfected {
 }
 
 ul.categories li.nhscost {
-    width: 12em;
+    width: 10em;
     background-color: var(--symptomatic);
 }
 
 ul.categories li.economycost {
-    width: 12em;
+    width: 10em;
     background-color: var(--symptomatic);
 }
 
 ul.categories li.vaccinationcost {
-    width: 12em;
+    width: 10em;
     background-color: var(--vaccinated);
 }
 
