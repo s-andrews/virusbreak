@@ -436,7 +436,13 @@ var updateSliders = function () {
         $("#virulenceslider").val(Math.round(virus.virulence * 100));
     }
 
-    $("#lethality").html(Math.round(virus.lethality * 100));
+    if (parseFloat(virus.lethality) < 0.01 && parseFloat(virus.lethality) > 0) {
+        $("#lethality").html((virus.lethality * 100).toFixed(1));
+    }
+    else {
+        $("#lethality").html(Math.round(virus.lethality * 100));
+
+    }
     if ($("#lethalityslider").val() != Math.round(virus.lethality * 100)) {
         $("#lethalityslider").val(Math.round(virus.lethality * 100));
     }
