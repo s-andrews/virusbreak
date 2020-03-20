@@ -65,10 +65,12 @@
             <div class="slider"><input type="range" min="0" max="100" value="80" class="slidercontrol"
                     id="vaccinationslider"> </div>
 
-            <p>Containment <br>(are symptomatic people quarantined)</p>
+            <p>Containment <br>(what steps are taken to slow the virus spread)</p>
             <div><select name="quarantine" id="quarantineselector">
-                    <option>No quarantine</option>
+                    <option>No containment</option>
                     <option>Quarantine</option>
+                    <option>Quarantine plus distancing</option>
+
                 </select>
             </div>
         </div>
@@ -91,6 +93,8 @@
         <table id="simulationtable">
 
         </table>
+
+
         <div class="categories">
             <ul class="categories">
                 <li class="economycost">Economic Cost<br><span id="economycost">0</span></li><li class="vaccinationcost">Vaccination Cost<br><span id="vaccinationcost">0</span></li><li class="nhscost">NHS Cost<br><span id="nhscost">0</span></li>
@@ -101,6 +105,7 @@
             <button id="startstop" type="button">Start</button>
             <button id="infect" type="button">Infect</button>
             <button id="reset" type="button">Reset</button>
+            <button id="graph" type="button">Switch</button>
         </div>
 
     </div>

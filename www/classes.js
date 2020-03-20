@@ -5,7 +5,8 @@ class Virus {
         infection,      // How long (days) between being symptomatic and either dieing or being cured
         lethality,      // How likely you are to die from being infected (0 - 1)
         vaccination,    // What proportion of the population are vaccinated (0 - 1)
-        quarantine      // Whether there is effective quarantine for infected people
+        quarantine,     // Whether there is effective quarantine for infected people
+        distancing      // Are we performing social distancing for this virus
     ) {
         this.virulence = virulence;
         this.incubation = incubation;
@@ -13,11 +14,19 @@ class Virus {
         this.lethality = lethality;
         this.vaccination = vaccination;
         this.quarantine = quarantine;
+        this.distancing = distancing
     }
 
 
     // A true/false value to say whether we're going to be infectious in this round
     randomIsInfected () {
+
+        // If we're doing distancing then we say that the virulence goes 
+        // down by 10X as we're meeting way fewer people
+        if (this.distancing) {
+            return(Math.random() <= (this.virulence/10));
+        }
+
         return(Math.random() <= this.virulence);
     }
 
@@ -95,6 +104,12 @@ class Person {
 
         // We don't let quarantined people move
         if (virus.quarantine && parseInt(this.infectedAt) + parseInt(virus.incubation) < day) {
+            return false;
+        }
+
+
+        // If we're applying distancing then we people don't move
+        if (virus.distancing) {
             return false;
         }
 

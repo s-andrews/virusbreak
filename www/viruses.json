@@ -6,8 +6,21 @@
         "infection" : 4,
         "lethality" : 0.005,
         "vaccination" : 0.47,
-        "quarantine" : false
+        "quarantine" : false,
+        "distancing" : false
     },
+
+    {
+        "name" : "Coronavirus",
+        "virulence" : 0.5,
+        "incubation" : 14,
+        "infection" : 14,
+        "lethality" : 0.05,
+        "vaccination" : 0,
+        "quarantine" : false,
+        "distancing" : false
+    },
+
 
     {
         "name" : "Measles",
@@ -16,7 +29,8 @@
         "infection" : 2,
         "lethality" : 0.003,
         "vaccination" : 0.75,
-        "quarantine" : true
+        "quarantine" : true,
+        "distancing" : false
     },
 
     {
@@ -26,6 +40,7 @@
         "infection" : 5,
         "lethality" : 0.5,
         "vaccination" : 0,
-        "quarantine" : true
+        "quarantine" : true,
+        "distancing" : false
     }
 ]

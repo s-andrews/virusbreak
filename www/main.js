@@ -119,7 +119,8 @@ var selectCustomVirus = function (virusname) {
             virus.lethality = customvirus.lethality;
             virus.vaccination = customvirus.vaccination;
             virus.quarantine = customvirus.quarantine;
-            
+            virus.distancing = customvirus.quarantine;
+
             updateSliders();
             resetSimulation();
             break;
@@ -464,11 +465,15 @@ var updateSliders = function () {
     }
 
     // Update the quarantine selector.
-    if (virus.quarantine) {
+    if (virus.quarantine & virus.distancing) {
+        $("#quarantineselector").val("Quarantine plus distancing");
+    }
+    else if (virus.quarantine) {
         $("#quarantineselector").val("Quarantine");
     }
+
     else {
-        $("#quarantineselector").val("No quarantine");
+        $("#quarantineselector").val("No containment");
     }
 }
 
@@ -569,11 +574,17 @@ $(document).ready(function () {
     })
 
     $("#quarantineselector").change(function () {
-        if ($(this).val() == "No quarantine") {
+        if ($(this).val() == "No containment") {
             virus.quarantine = false;
+            virus.distancing = false;
+        }
+        else if ($(this).val() == "Quarantine plus distancing") {
+            virus.quarantine = true;
+            virus.distancing = true;
         }
         else {
             virus.quarantine = true;
+            virus.distancing = false;
         }
 
         updateSliders();
