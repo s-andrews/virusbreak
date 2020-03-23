@@ -13,7 +13,7 @@
     {
         "name" : "Coronavirus",
         "virulence" : 0.5,
-        "incubation" : 14,
+        "incubation" : 5,
         "infection" : 9,
         "lethality" : 0.05,
         "vaccination" : 0,
