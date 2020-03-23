@@ -466,16 +466,13 @@ var updateSliders = function () {
 
     // Update the quarantine selector.
     if (virus.quarantine & virus.distancing) {
-        alert("Setting quar plus dist")
         $("#quarantineselector").val("Quarantine plus distancing");
     }
     else if (virus.quarantine) {
-        alert("Setting quar")
         $("#quarantineselector").val("Quarantine");
     }
 
     else {
-        alert("Setting no containment")
         $("#quarantineselector").val("No containment");
     }
 }
