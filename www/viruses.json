@@ -14,7 +14,7 @@
         "name" : "Coronavirus",
         "virulence" : 0.5,
         "incubation" : 14,
-        "infection" : 14,
+        "infection" : 9,
         "lethality" : 0.05,
         "vaccination" : 0,
         "quarantine" : false,
