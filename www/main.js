@@ -621,6 +621,11 @@ $(document).ready(function () {
             $("#heatmap").hide();
             $("#graphdiv").show();
             $(this).text("Map")
+
+            // If we don't force a relayout then 
+            // the graph won't fill the space until
+            // the screen is resized.
+            Plotly.relayout("graphdiv",{})
         }
         else {
             $("#heatmap").show();
