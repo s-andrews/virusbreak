@@ -86,46 +86,66 @@ var createGraph = function() {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Uninfected'
+                name: 'Uninfected',
+                line: {
+                    color: 'rgb(187,187,187)'
+                }
             },
             {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Carriers'
+                name: 'Carriers',
+                line: {
+                    color: 'rgb(152,78,163)'
+                }
             },
             {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Sick'
+                name: 'Sick',
+                line: {
+                    color: 'rgb(228,26,28)'
+                }
             },
             {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Immune'
+                name: 'Immune',
+                line: {
+                    color: 'rgb(77,175,74)'
+                }
             },
             {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Vaccinated'
+                name: 'Vaccinated',
+                line: {
+                    color: 'rgb(159, 180, 156)'
+                }
             },
             {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Dead'
+                name: 'Dead',
+                line: {
+                    color: 'rgb(0,0,0)'
+                }
             }
 
         ],
         {
-            title: "Virus progression"
+            title: "Virus progression",
+            autosize: true
 
         },
         {
-            displayModeBar: false
+            displayModeBar: false,
+            responsive: true
         }
     )
 }
