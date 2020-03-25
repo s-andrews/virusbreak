@@ -135,6 +135,16 @@ div.simulation {
     width: 63%;
 }
 
+#simulationdiv {
+}
+
+#graphdiv {
+    display: none;
+    height: 25%;
+}
+
+
+
 div.virus {
     width:28%;
     margin-right: 2%;

@@ -12,6 +12,8 @@
     <script src="jquery-3.4.0.min.js"></script>
     <script src="classes.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 
     <!-- PWA equivalent meta tags for iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -90,9 +92,14 @@
             </ul>
         </div>
 
+
         <table id="simulationtable">
 
         </table>
+
+        <div id="graphdiv">
+
+        </div>
 
 
         <div class="categories">
@@ -101,14 +108,20 @@
             </ul>
         </div>
 
-        <div class="buttons">
-            <button id="startstop" type="button">Start</button>
-            <button id="infect" type="button">Infect</button>
-            <button id="reset" type="button">Reset</button>
-            <button id="graph" type="button">Switch</button>
-        </div>
+    </div>
+
+    <div class="simulation" id="graphdiv">
 
     </div>
+
+    <div class="buttons">
+        <button id="startstop" type="button">Start</button>
+        <button id="infect" type="button">Infect</button>
+        <button id="reset" type="button">Reset</button>
+        <button id="graph" type="button">Switch</button>
+    </div>
+
+
 
     <div id="fadeout">
 
