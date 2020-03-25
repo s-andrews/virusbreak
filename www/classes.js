@@ -32,12 +32,13 @@ class Virus {
 
     // A true/false value to say whether an infection is going to be lethal
     //
-    // We need a logical value to say whether the UK has run out of beds
-    // to treat people.  If so then we make the lethality go up by 2X
-    randomIsLethal (out_of_beds) {
+    // We need the ratio of bed use vs availability.  We multiply the lethality
+    // by this if it's > 1 to account for people not getting the treatment they
+    // need
+       randomIsLethal (bedUseRatio) {
 
-        if (out_of_beds) {
-            return(Math.random() <= (this.lethality*2));
+        if (bedUseRatio > 1) {
+            return(Math.random() <= (this.lethality*bedUseRatio));
         }
         else {
             return(Math.random() <= this.lethality);

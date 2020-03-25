@@ -17,9 +17,9 @@ let economicCostOfDeath = 8600000;
 let nhsCostOfIllness = 100;         // Cost is per day for this value
 let nhsCostOfDeath = 26000;        
 
-let criticalCareBeds = 4000;        // Number of critical care beds in the UK
+let criticalCareBeds = 150000;      // Number of critical and acute care beds in the UK
 
-let outOfBeds = false;              // Did we run out of beds in the last round
+let bedUseRatio = 0;                // Were we oversubscribed for beds in the last round
 
 
 // The size of the simulation area
@@ -249,7 +249,7 @@ var increaseDay = function () {
                 // They've reached the end of the incubation period so they either
                 // need to become immune or die.
 
-                if (virus.randomIsLethal(outOfBeds)) {
+                if (virus.randomIsLethal(bedUseRatio)) {
                     // They died
                     person.dead = true;
                 }
@@ -417,12 +417,13 @@ var setPeopleClasses = function () {
 
     // We assume that 5X the number of people who die will need 
     // hospital treatment
-    if (groupcounts["symptomatic"] * virus.lethality * 5 > criticalCareBeds) {
-        outOfBeds = true;
+    bedUseRatio = groupcounts["symptomatic"] * virus.lethality * 5 / criticalCareBeds;
+
+    // We cap the bedUseRatio at 5
+    if (bedUseRatio > 5) {
+        bedUseRatio = 5;
     }
-    else {
-        outOfBeds = false;
-    }
+
 
     // We can test whether there are no infectious or infected
     // individuals and stop the simulation if this is the case.
