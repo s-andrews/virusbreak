@@ -148,6 +148,7 @@ var createGraph = function() {
                 t: 0,
                 pad: 1
               },
+              hovermode: false
 
         },
         {
