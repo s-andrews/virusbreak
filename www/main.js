@@ -140,7 +140,8 @@ var createGraph = function() {
         ],
         {
             title: "Virus progression",
-            autosize: true
+            autosize: true,
+            showlegend: false
 
         },
         {

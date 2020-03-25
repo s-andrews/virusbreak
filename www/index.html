@@ -82,32 +82,35 @@
 
 
     <div class="simulation" id="simulationdiv">
+        <div id="clockdiv">
+            <p id="day">Day 1</p>
+        </div>
+
+        <div class="categories">
+            <ul class="categories">
+                <li class="uninfected">Uninfected<br><span id="uninfectedcount">0</span></li><li class="infectious">Carriers<br><span id="infectiouscount">0</span></li><li class="symptomatic">Sick<br><span id="symptomaticcount">0</span></li><li class="immune">Immune<br><span id="immunecount">0</span></li><li class="vaccinated">Vaccinated<br><span id="vaccinatedcount">0</span></li><li class="dead">Dead<br><span id="deadcount">0</span></li>
+            </ul>
+        </div>
+
         <div id="heatmap">
-            <div id="clockdiv">
-                <p id="day">Day 1</p>
-            </div>
-
-            <div class="categories">
-                <ul class="categories">
-                    <li class="uninfected">Uninfected<br><span id="uninfectedcount">0</span></li><li class="infectious">Carriers<br><span id="infectiouscount">0</span></li><li class="symptomatic">Sick<br><span id="symptomaticcount">0</span></li><li class="immune">Immune<br><span id="immunecount">0</span></li><li class="vaccinated">Vaccinated<br><span id="vaccinatedcount">0</span></li><li class="dead">Dead<br><span id="deadcount">0</span></li>
-                </ul>
-            </div>
-
 
             <table id="simulationtable">
 
             </table>
 
-            <div class="categories">
-                <ul class="categories">
-                    <li class="economycost">Economic Cost<br><span id="economycost">0</span></li><li class="vaccinationcost">Vaccine Cost<br><span id="vaccinationcost">0</span></li><li class="nhscost">NHS Cost<br><span id="nhscost">0</span></li>
-                </ul>
-            </div>
         </div>
 
         <div id="graphdiv">
             <!-- This is the placeholder for the plotly graph -->
         </div>
+
+
+        <div class="categories">
+            <ul class="categories">
+                <li class="economycost">Economic Cost<br><span id="economycost">0</span></li><li class="vaccinationcost">Vaccine Cost<br><span id="vaccinationcost">0</span></li><li class="nhscost">NHS Cost<br><span id="nhscost">0</span></li>
+            </ul>
+        </div>
+
 
         <div class="buttons">
             <button id="startstop" type="button">Start</button>
