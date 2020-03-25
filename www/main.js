@@ -121,8 +121,11 @@ var createGraph = function() {
 
         ],
         {
-            autosize: true,
-            responsive: true
+            title: "Virus progression"
+
+        },
+        {
+            displayModeBar: false
         }
     )
 }
@@ -548,6 +551,9 @@ var resetSimulation = function () {
             people[r][c].reset();
         }
     }
+
+    // Also reset the graph
+    createGraph();
 
     // We finish by randomly introducing one
     // infection so that there's something to 
