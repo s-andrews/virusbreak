@@ -76,6 +76,88 @@ var createSimulationTable = function () {
     setPeopleClasses();
 }
 
+// This function builds the initial Plotly graph which the user can switch to
+var createGraph = function() {
+
+    Plotly.newPlot(
+        'graphdiv',
+        [
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Uninfected',
+                line: {
+                    color: 'rgb(187,187,187)'
+                }
+            },
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Carriers',
+                line: {
+                    color: 'rgb(152,78,163)'
+                }
+            },
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Sick',
+                line: {
+                    color: 'rgb(228,26,28)'
+                }
+            },
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Immune',
+                line: {
+                    color: 'rgb(77,175,74)'
+                }
+            },
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Vaccinated',
+                line: {
+                    color: 'rgb(159, 180, 156)'
+                }
+            },
+            {
+                x: [1],
+                y: [0],
+                type: 'line',
+                name: 'Dead',
+                line: {
+                    color: 'rgb(0,0,0)'
+                }
+            }
+
+        ],
+        {
+            autosize: true,
+            showlegend: false,
+            margin: {
+                l: 50,
+                r: 0,
+                b: 25,
+                t: 0,
+                pad: 1
+              },
+              hovermode: false
+
+        },
+        {
+            displayModeBar: false,
+            responsive: true
+        }
+    )
+}
+
 
 // A function to populate the help div from a separate file
 var loadWelcomeText = function() {
@@ -291,10 +373,23 @@ var setPeopleClasses = function () {
         }
     }
 
+    // Convert the point counts to actual numbers
+    for (var thisclass in groupcounts) {
+        corrected = groupcounts[thisclass] / (rows * cols);
+        corrected *= population;
+        groupcounts[thisclass] = corrected;
+    }
+
     // First we update the counts
     for (var thisclass in groupcounts) {
         $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
     }
+
+    // Now we update the graph
+    Plotly.extendTraces('graphdiv', {
+       x: [[day], [day],[day],[day], [day],[day]],
+        y: [[groupcounts["uninfected"]], [groupcounts["infectious"]],[groupcounts["symptomatic"]],[groupcounts["immune"]], [groupcounts["vaccinated"]],[groupcounts["dead"]],]
+    }, [0, 1, 2, 3, 4, 5])
 
     // Now we update the costs
 
@@ -319,14 +414,6 @@ var setPeopleClasses = function () {
 }
 
 var formatLargeNumber = function (value) {
-
-    // The number which comes in is just a number
-    // of squares.  We need to correct this to 
-    // reflect a number of people from our supposed
-    // population
-
-    value = value / (rows*cols);
-    value = value * population;
 
     if (value > 1000000000) {
         value = Math.round(value/1000000000);
@@ -492,6 +579,9 @@ var resetSimulation = function () {
         }
     }
 
+    // Also reset the graph
+    createGraph();
+
     // We finish by randomly introducing one
     // infection so that there's something to 
     // do in the simulation
@@ -509,6 +599,7 @@ $(document).ready(function () {
 
     loadWelcomeText();
     loadVirusList();
+    createGraph();
     createSimulationTable();
     updateSliders();
     randomlyInfect();
@@ -528,6 +619,25 @@ $(document).ready(function () {
         else {
             intervalID = setInterval(increaseDay, timeout);
             $(this).html("Stop");
+        }
+    });
+
+    $("#switchbutton").click(function() {
+        // TODO: Add the reverse logic
+        if ($(this).text()=="Graph") {
+            $("#heatmap").hide();
+            $("#graphdiv").show();
+            $(this).text("Map")
+
+            // If we don't force a relayout then 
+            // the graph won't fill the space until
+            // the screen is resized.
+            Plotly.relayout("graphdiv",{})
+        }
+        else {
+            $("#heatmap").show();
+            $("#graphdiv").hide();
+            $(this).text("Graph")
         }
     });
 

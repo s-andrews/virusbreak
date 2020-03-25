@@ -135,6 +135,16 @@ div.simulation {
     width: 63%;
 }
 
+#simulationdiv {
+}
+
+#graphdiv {
+    display: none;
+    height: 20em;
+}
+
+
+
 div.virus {
     width:28%;
     margin-right: 2%;
@@ -340,6 +350,10 @@ ul.categories li.vaccinationcost {
         width: 96%;
         display: none;
     }
+    #graphdiv {
+        height: 10em;
+    }
+
     table {
         height: 40vh;
     }
