@@ -15,7 +15,11 @@ let costOfVaccine = 16;             // See bug #28 for value source
 let economicCostOfIllness = 160;    // Cost is per day for this value
 let economicCostOfDeath = 8600000;  
 let nhsCostOfIllness = 100;         // Cost is per day for this value
-let nhsCostOfDeath = 26000;         
+let nhsCostOfDeath = 26000;        
+
+let criticalCareBeds = 4000;        // Number of critical care beds in the UK
+
+let outOfBeds = false;              // Did we run out of beds in the last round
 
 
 // The size of the simulation area
@@ -226,6 +230,10 @@ var increaseDay = function () {
     day += 1;
     $("#day").text("Day " + day);
 
+    // For the calculation of lethality we need to know whether
+    // the UK has run out of critical care beds.  There are around
+    // 4000
+
     // Go through the people updating their
     // status if needed and create new infections
     // if needed.
@@ -239,8 +247,9 @@ var increaseDay = function () {
             // See if we need to make them be killed or cured
             if (parseInt(person.infectedAt) + parseInt(virus.incubation) + parseInt(virus.infection) == day) {
                 // They've reached the end of the incubation period so they either
-                // need to become immune or die
-                if (virus.randomIsLethal()) {
+                // need to become immune or die.
+
+                if (virus.randomIsLethal(outOfBeds)) {
                     // They died
                     person.dead = true;
                 }
@@ -400,6 +409,20 @@ var setPeopleClasses = function () {
     $("#economycost").html("&pound;"+formatLargeNumber(economyCost));
     $("#nhscost").html("&pound;"+formatLargeNumber(nhsCost));
     $("#vaccinationcost").html("&pound;"+formatLargeNumber(vaccinationCost));
+
+
+    // We need to set the flag which says whether we've run out 
+    // of critical care beds, because we double the lethality if
+    // we have
+
+    // We assume that 5X the number of people who die will need 
+    // hospital treatment
+    if (groupcounts["symptomatic"] * virus.lethality * 5 > criticalCareBeds) {
+        outOfBeds = true;
+    }
+    else {
+        outOfBeds = false;
+    }
 
     // We can test whether there are no infectious or infected
     // individuals and stop the simulation if this is the case.

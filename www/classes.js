@@ -31,8 +31,18 @@ class Virus {
     }
 
     // A true/false value to say whether an infection is going to be lethal
-    randomIsLethal () {
-        return(Math.random() <= this.lethality);
+    //
+    // We need a logical value to say whether the UK has run out of beds
+    // to treat people.  If so then we make the lethality go up by 2X
+    randomIsLethal (out_of_beds) {
+
+        if (out_of_beds) {
+            return(Math.random() <= (this.lethality*2));
+        }
+        else {
+            return(Math.random() <= this.lethality);
+        }
+
     }
 
     // A true / false value to say whether an individual starts out vaccinated
