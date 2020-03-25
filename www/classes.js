@@ -24,7 +24,7 @@ class Virus {
         // If we're doing distancing then we say that the virulence goes 
         // down by 10X as we're meeting way fewer people
         if (this.distancing) {
-            return(Math.random() <= (this.virulence/10));
+            return(Math.random() <= (this.virulence/5));
         }
 
         return(Math.random() <= this.virulence);
