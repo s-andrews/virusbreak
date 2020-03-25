@@ -591,8 +591,16 @@ $(document).ready(function () {
 
     $("#switchbutton").click(function() {
         // TODO: Add the reverse logic
-        $("#heatmap").hide();
-        $("#graphdiv").show();
+        if ($(this).text()=="Graph") {
+            $("#heatmap").hide();
+            $("#graphdiv").show();
+            $(this).text("Map")
+        }
+        else {
+            $("#heatmap").show();
+            $("#graphdiv").hide();
+            $(this).text("Graph")
+        }
     });
 
 
