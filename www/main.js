@@ -79,48 +79,41 @@ var createSimulationTable = function () {
 // This function builds the initial Plotly graph which the user can switch to
 var createGraph = function() {
 
-    uninfected : 0,
-        infectious : 0,
-        symptomatic : 0,
-        immune : 0,
-        vaccinated : 0,
-        dead : 0
-
     Plotly.newPlot(
         'graphdiv',
         [
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Uninfected'
             },
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Carriers'
             },
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Sick'
             },
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Immune'
             },
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Vaccinated'
             },
             {
-                x: [0],
+                x: [1],
                 y: [0],
                 type: 'line',
                 name: 'Dead'
@@ -354,6 +347,12 @@ var setPeopleClasses = function () {
         $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
     }
 
+    // Now we update the graph
+    Plotly.extendTraces('graphdiv', {
+       x: [[day], [day],[day],[day], [day],[day]],
+        y: [[groupcounts["uninfected"]], [groupcounts["infectious"]],[groupcounts["symptomatic"]],[groupcounts["immune"]], [groupcounts["vaccinated"]],[groupcounts["dead"]],]
+    }, [0, 1, 2, 3, 4, 5])
+
     // Now we update the costs
 
      let economyCost =   (groupcounts["dead"] * economicCostOfDeath) + (groupcounts["immune"] * economicCostOfIllness * virus.infection) + (groupcounts["symptomatic"] * economicCostOfIllness * virus.infection);
@@ -567,8 +566,8 @@ $(document).ready(function () {
 
     loadWelcomeText();
     loadVirusList();
-    createSimulationTable();
     createGraph();
+    createSimulationTable();
     updateSliders();
     randomlyInfect();
 
@@ -588,6 +587,12 @@ $(document).ready(function () {
             intervalID = setInterval(increaseDay, timeout);
             $(this).html("Stop");
         }
+    });
+
+    $("#switchbutton").click(function() {
+        // TODO: Add the reverse logic
+        $("#heatmap").hide();
+        $("#graphdiv").show();
     });
 
 
