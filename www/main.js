@@ -139,9 +139,15 @@ var createGraph = function() {
 
         ],
         {
-            title: "Virus progression",
             autosize: true,
-            showlegend: false
+            showlegend: false,
+            margin: {
+                l: 50,
+                r: 0,
+                b: 25,
+                t: 0,
+                pad: 1
+              },
 
         },
         {
@@ -366,6 +372,13 @@ var setPeopleClasses = function () {
         }
     }
 
+    // Convert the point counts to actual numbers
+    for (var thisclass in groupcounts) {
+        corrected = groupcounts[thisclass] / (rows * cols);
+        corrected *= population;
+        groupcounts[thisclass] = corrected;
+    }
+
     // First we update the counts
     for (var thisclass in groupcounts) {
         $("#"+thisclass+"count").html(formatLargeNumber(groupcounts[thisclass]));
@@ -400,14 +413,6 @@ var setPeopleClasses = function () {
 }
 
 var formatLargeNumber = function (value) {
-
-    // The number which comes in is just a number
-    // of squares.  We need to correct this to 
-    // reflect a number of people from our supposed
-    // population
-
-    value = value / (rows*cols);
-    value = value * population;
 
     if (value > 1000000000) {
         value = Math.round(value/1000000000);

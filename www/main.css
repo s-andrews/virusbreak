@@ -350,6 +350,10 @@ ul.categories li.vaccinationcost {
         width: 96%;
         display: none;
     }
+    #graphdiv {
+        height: 10em;
+    }
+
     table {
         height: 40vh;
     }
