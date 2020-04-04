@@ -90,15 +90,6 @@ var createGraph = function() {
                 x: [1],
                 y: [0],
                 type: 'line',
-                name: 'Uninfected',
-                line: {
-                    color: 'rgb(187,187,187)'
-                }
-            },
-            {
-                x: [1],
-                y: [0],
-                type: 'line',
                 name: 'Carriers',
                 line: {
                     color: 'rgb(152,78,163)'
@@ -111,24 +102,6 @@ var createGraph = function() {
                 name: 'Sick',
                 line: {
                     color: 'rgb(228,26,28)'
-                }
-            },
-            {
-                x: [1],
-                y: [0],
-                type: 'line',
-                name: 'Immune',
-                line: {
-                    color: 'rgb(77,175,74)'
-                }
-            },
-            {
-                x: [1],
-                y: [0],
-                type: 'line',
-                name: 'Vaccinated',
-                line: {
-                    color: 'rgb(159, 180, 156)'
                 }
             },
             {
@@ -396,9 +369,9 @@ var setPeopleClasses = function () {
 
     // Now we update the graph
     Plotly.extendTraces('graphdiv', {
-       x: [[day], [day],[day],[day], [day],[day]],
-        y: [[groupcounts["uninfected"]], [groupcounts["infectious"]],[groupcounts["symptomatic"]],[groupcounts["immune"]], [groupcounts["vaccinated"]],[groupcounts["dead"]],]
-    }, [0, 1, 2, 3, 4, 5])
+       x: [[day], [day],[day]],
+        y: [[groupcounts["infectious"]],[groupcounts["symptomatic"]],[groupcounts["dead"]]]
+    }, [0, 1, 2,])
 
     // Now we update the costs
 
