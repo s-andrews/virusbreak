@@ -17,7 +17,7 @@
         "infection" : 9,
         "lethality" : 0.05,
         "vaccination" : 0,
-        "quarantine" : false,
+        "quarantine" : true,
         "distancing" : false
     },
 
